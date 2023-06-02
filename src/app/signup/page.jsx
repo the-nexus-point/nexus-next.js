@@ -1,3 +1,12 @@
-export default ()=>{
-    return <h1>sign up</h1>
-}
+import React from "react";
+import SignUp from "../../components/SignUp";
+
+const LoginPage = () => {
+  return (
+    <div>
+      <SignUp />
+    </div>
+  );
+};
+
+export default LoginPage;

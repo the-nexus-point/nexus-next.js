@@ -2,11 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  background: rgb(0, 0, 0);
-  background: linear-gradient(
-    0deg,
-    rgb(24, 24, 24) 31%,
-    rgba(85, 4, 122, 0.9051995798319328) 100%
-  );
+.gradient-background {
+    background: rgb(0, 0, 0);
+    background: linear-gradient(
+      0deg,
+      rgb(24, 24, 24) 31%,
+      rgba(85, 4, 122, 0.9051995798319328) 100%
+    );
+    background-repeat: no-repeat;
+    background-attachment: fixed; 
 }

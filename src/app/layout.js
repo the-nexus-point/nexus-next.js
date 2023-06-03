@@ -12,9 +12,9 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={`${inter.className} text-white`}>
         <div className="gradient-background">
-          <div>NAVBAR</div>
+          {/* <div>NAVBAR</div> */}
           {children}
-          <div>FOOTER</div>
+          {/* <div>FOOTER</div> */}
         </div>
       </body>
     </html>

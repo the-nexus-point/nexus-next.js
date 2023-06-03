@@ -3,12 +3,13 @@
 @tailwind utilities;
 
 .gradient-background {
-    background: rgb(0, 0, 0);
-    background: linear-gradient(
-      0deg,
-      rgb(24, 24, 24) 31%,
-      rgba(85, 4, 122, 0.9051995798319328) 100%
-    );
-    background-repeat: no-repeat;
-    background-attachment: fixed; 
+  background: rgb(0, 0, 0);
+  background: linear-gradient(
+    0deg,
+    rgb(24, 24, 24) 31%,
+    rgba(85, 4, 122, 0.9051995798319328) 100%
+  );
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  min-height: 100vh;
 }

@@ -1,5 +1,7 @@
 # Nexus
+
 ##### Connect, Collaborate, and Thrive Together.
+
 ## Description
 
 This is a Next.js full-stack project that provides a platform where students can connect, share, collaborate, and engage with each other of their respective university.
@@ -30,7 +32,6 @@ This is a Next.js full-stack project that provides a platform where students can
 - Clone the repository: `git clone [repository URL]`
 - Install dependencies: `npm install`
 - Set up environment variables:
-   - Create a `.env` file in the project root directory.
-   <!-- - Add the required environment variables following the `.env.example` file. -->
+  - Create a `.env` file in the project root directory.
+  <!-- - Add the required environment variables following the `.env.example` file. -->
 - Start the development server: `npm run dev`
-

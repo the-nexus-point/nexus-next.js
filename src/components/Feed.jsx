@@ -1,10 +1,8 @@
 import Container from "./shared/Container";
 
-const active = true;
-
 const Feed = () => {
   return (
-    <Container >
+    <Container activeRoute="feed">
       <div className="p-20">
         <h1 className="text-4xl">Post 1</h1>
         <p>

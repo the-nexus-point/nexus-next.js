@@ -2,7 +2,7 @@ import { AiFillHome, AiFillFlag } from "react-icons/ai";
 import { SiMarketo } from "react-icons/si";
 import { FaUserCircle } from "react-icons/fa";
 
-const Container = ({ children }) => {
+const Container = ({ children, activeRoute }) => {
   return (
     <div className="w-full h-screen flex flex-col">
       <div className="navbar flex justify-between border-b border-gray-700 p-2">
@@ -16,15 +16,33 @@ const Container = ({ children }) => {
       <div className="h-full w-full flex overflow-hidden">
         <div className="h-full w-1/4 flex flex-col justify-between border-r border-gray-700">
           <div className="flex flex-col space-y-5 justify-between my-5">
-            <button className="flex items-center rounded bg-neutral-900/25 hover:bg-neutral-900/40 font-bold py-2 px-4 mx-5">
+            <button
+              className={`flex items-center rounded ${
+                activeRoute === "feed"
+                  ? `bg-neutral-900/50`
+                  : `bg-neutral-900/25 hover:bg-neutral-900/40`
+              } font-bold py-2 px-4 mx-5`}
+            >
               <AiFillHome className="w-8 h-8 mx-2" />
               Feed
             </button>
-            <button className="flex items-center rounded bg-neutral-900/25 hover:bg-neutral-900/40 font-bold py-2 px-4 mx-5">
+            <button
+              className={`flex items-center rounded ${
+                activeRoute === "challenges"
+                  ? `bg-neutral-900/50`
+                  : `bg-neutral-900/25 hover:bg-neutral-900/40`
+              } font-bold py-2 px-4 mx-5`}
+            >
               <AiFillFlag className="w-8 h-8 mx-2" />
               Challenges
             </button>
-            <button className="flex items-center rounded bg-neutral-900/25 hover:bg-neutral-900/40 font-bold py-2 px-4 mx-5">
+            <button
+              className={`flex items-center rounded ${
+                activeRoute === "marketplace"
+                  ? `bg-neutral-900/50`
+                  : `bg-neutral-900/25 hover:bg-neutral-900/40`
+              } font-bold py-2 px-4 mx-5`}
+            >
               <SiMarketo className="w-8 h-8 mx-2" />
               Market Place
             </button>

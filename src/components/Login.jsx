@@ -1,4 +1,5 @@
 import React from "react";
+import { FcGoogle } from "react-icons/fc";
 
 const Login = () => {
   return (
@@ -33,7 +34,8 @@ const Login = () => {
         </div>
         <hr />
         <div className="flex items-center justify-center mt-5 ">
-          <button className=" border border-gray-700 hover:border-gray-400 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+          <button className="flex items-center border border-gray-700 hover:border-gray-400 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+            <FcGoogle className="mx-2" />
             Sign in with Google
           </button>
         </div>

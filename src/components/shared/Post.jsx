@@ -15,14 +15,15 @@ const Post = ({ username, content }) => {
       </div>
       <p>{content}</p>
       <div className="flex items-center mt-4 space-x-2">
-        <button className="flex items-center rounded bg-neutral-900/25 hover:bg-neutral-900/40 text-white font-bold py-1 px-2">
-          10<AiOutlineArrowUp className="w-4 h-4" />
+        <button className="flex text-sm items-center rounded bg-neutral-900/25 hover:bg-neutral-900/40 text-white font-bold py-1 px-2 space-x-1">
+          <span>100</span><AiOutlineArrowUp className="w-4 h-4" />
         </button>
-        <button className="flex items-center rounded bg-neutral-900/25 hover:bg-neutral-900/40 text-white font-bold py-1 px-2">
-          10<AiOutlineArrowDown className="w-4 h-4" />
+        <button className="flex text-sm items-center rounded bg-neutral-900/25 hover:bg-neutral-900/40 text-white font-bold py-1 px-2 space-x-1">
+        <span>10</span>
+          <AiOutlineArrowDown className="w-4 h-4" />
         </button>
-        <button className="flex items-center rounded bg-neutral-900/25 hover:bg-neutral-900/40 text-white font-bold py-1 px-2">
-          3<FaComment className="w-4 h-4 mr-1" />
+        <button className="flex text-sm items-center rounded bg-neutral-900/25 hover:bg-neutral-900/40 text-white font-bold py-1 px-2 space-x-1">
+        <span>3</span><FaComment className="w-4 h-4 mr-1" />
         </button>
       </div>
     </div>

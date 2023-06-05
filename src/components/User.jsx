@@ -1,6 +1,7 @@
 import React from "react";
 import { FaUserCircle } from "react-icons/fa";
 import UserContainer from "./shared/UserContainer";
+import { AiOutlineArrowUp, AiOutlineArrowDown } from "react-icons/ai";
 
 const Profile = () => {
   const user = {
@@ -11,7 +12,7 @@ const Profile = () => {
     location: "New York, USA",
     website: "https://www.example.com",
     upvotes: 100,
-    downvotes: 100,
+    downvotes: 10,
     department: "CSAI",
     challengeRanking: 5,
     tags: ["JavaScript", "React", "Node.js"],
@@ -21,15 +22,22 @@ const Profile = () => {
     <UserContainer>
       <div className="w-3/4 flex flex-col overflow-y-auto">
         <div className="flex border-b border-gray-700">
-          <div className="w-1/2 flex justify-between p-2 bg-black">
-            <div className="flex flex-col">
+            <div className="w-1/2 flex flex-col justify-center items-center">
               <FaUserCircle className="text-5xl hover:text-black hover:opacity-75" />
               <h2 className="text-xl font-semibold">{user.username}</h2>
-              <p>Total Upvotes: {user.upvotes}</p>
+              <p className="text-sm">{user.bio}</p>
+              <div className="flex items-center mt-2">
+                <button className="flex items-center rounded bg-neutral-900/25 hover:bg-neutral-900/40 text-white font-bold py-1 px-2">
+                  {user.upvotes}
+                  <AiOutlineArrowUp className="w-4 h-4" />
+                </button>
+                <button className="flex items-center rounded bg-neutral-900/25 hover:bg-neutral-900/40 text-white font-bold py-1 px-2 ml-2">
+                  {user.downvotes}
+                  <AiOutlineArrowDown className="w-4 h-4" />
+                </button>
+              </div>
             </div>
-          </div>
-          <div className="w-1/2 flex justify-between p-2 bg-gray">
-            <div className="mx-8">
+          <div className="w-1/2 flex flex-col justify-center items-center">
               <h2 className="text-lg font-semibold">{user.department}</h2>
               <p>Challenge Ranking: {user.challengeRanking}</p>
               <div className="flex space-x-2">
@@ -42,7 +50,6 @@ const Profile = () => {
                   </span>
                 ))}
               </div>
-            </div>
           </div>
         </div>
         <div className="bg-black p-20">

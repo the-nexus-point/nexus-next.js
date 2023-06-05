@@ -1,4 +1,4 @@
-import { AiFillHome, AiFillFlag } from "react-icons/ai";
+import { AiFillHome, AiFillFlag, AiFillMessage } from "react-icons/ai";
 import { SiMarketo } from "react-icons/si";
 import { FaUserCircle } from "react-icons/fa";
 
@@ -51,8 +51,9 @@ const Container = ({ children, activeRoute }) => {
             </button>
           </div>
           <div className="flex-shrink-0 mt-auto mb-5 mx-5">
-            <button className="border rounded py-2 px-4 w-full">
-              Feedback
+            <button className="flex items-center border border-gray-700 hover:border-gray-400 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+              <AiFillMessage className="mx-2" />
+              feedback
             </button>
           </div>
         </div>

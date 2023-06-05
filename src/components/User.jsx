@@ -39,7 +39,7 @@ const Profile = () => {
               Account Settings
             </button>
           </div>
-          <div className="flex flex-shrink-0 justify-between mt-auto mb-5 mx-5">
+          <div className="flex justify-between mt-auto mb-5 mx-5">
             <button className="flex items-center border border-gray-700 hover:border-gray-400 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
               <AiFillMessage className="mx-2" />
               <span>feedback</span>

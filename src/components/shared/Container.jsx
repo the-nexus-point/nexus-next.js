@@ -1,4 +1,9 @@
-import { AiFillHome, AiFillFlag, AiFillMessage } from "react-icons/ai";
+import {
+  AiFillHome,
+  AiFillFlag,
+  AiFillMessage,
+  AiOutlinePlus,
+} from "react-icons/ai";
 import { SiMarketo } from "react-icons/si";
 import { FaUserCircle } from "react-icons/fa";
 
@@ -46,8 +51,9 @@ const Container = ({ children, activeRoute }) => {
               <SiMarketo className="w-8 h-8 mx-2" />
               Market Place
             </button>
-            <button className="rounded-full bg-purple-500 hover:bg-purple-700 font-bold py-2 px-4 focus:outline-none focus:shadow-outline mx-5">
-              Create Post
+            <button className="rounded-full bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 mx-5 focus:outline-none focus:shadow-outline flex items-center justify-center space-x-2">
+              <AiOutlinePlus className="text-xl" />
+              <span>Create Post</span>
             </button>
           </div>
           <div className="flex-shrink-0 mt-auto mb-5 mx-5">

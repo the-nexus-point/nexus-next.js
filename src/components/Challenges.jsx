@@ -1,6 +1,6 @@
 import React from "react";
 import Container from "./shared/Container";
-import { MdGroups2 } from "react-icons/md";
+import Challenge from "./shared/Challenge";
 import { FaHackerrank } from "react-icons/fa";
 import { SiCodechef } from "react-icons/si";
 
@@ -35,30 +35,10 @@ const Challenges = () => {
 
   return (
     <Container activeRoute="challenges">
-      <div className="p-2">
-        <div className="grid gap-6">
-          {challenges.map((challenge) => (
-            <div
-              key={challenge.id}
-              className="border rounded p-4 flex justify-between items-center"
-            >
-              <div className="flex flex-col space-y-3">
-                {challenge.logo}
-                <h2 className="text-lg font-semibold">{challenge.name}</h2>
-                <p>{challenge.detail}</p>
-                <div className="flex items-center space-x-2 mt-2">
-                  <MdGroups2 className="text-3xl text-gray-400" />
-                  <span className="text-gray-400">
-                    {challenge.participants}
-                  </span>
-                </div>
-              </div>
-              <button className="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 focus:outline-none focus:shadow-outline rounded">
-                Register
-              </button>
-            </div>
-          ))}
-        </div>
+      <div className="p-2 flex flex-col space-y-1">
+        {challenges.map((challenge) => (
+          <Challenge key={challenge.id} challenge={challenge} />
+        ))}
       </div>
     </Container>
   );

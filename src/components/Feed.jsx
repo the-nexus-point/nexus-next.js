@@ -4,7 +4,7 @@ import Post from "./shared/Post";
 const Feed = () => {
   return (
     <Container activeRoute="feed">
-      <div className="flex flex-col space-y-1">
+      <div className="p-2 flex flex-col space-y-1">
         <Post
           username="harsh.2125csai1044"
           content="This is the first post, which is going to be tested"

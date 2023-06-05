@@ -3,6 +3,7 @@ import {
   AiFillFlag,
   AiFillMessage,
   AiOutlinePlus,
+  AiOutlineLogout,
 } from "react-icons/ai";
 import { SiMarketo } from "react-icons/si";
 import { FaUserCircle } from "react-icons/fa";
@@ -56,10 +57,14 @@ const Container = ({ children, activeRoute }) => {
               <span>Create Post</span>
             </button>
           </div>
-          <div className="flex-shrink-0 mt-auto mb-5 mx-5">
+          <div className="flex flex-shrink-0 justify-between mt-auto mb-5 mx-5">
             <button className="flex items-center border border-gray-700 hover:border-gray-400 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
               <AiFillMessage className="mx-2" />
-              feedback
+              <span>feedback</span>
+            </button>
+            <button className="logout-button flex items-center space-x-2 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+              <AiOutlineLogout className="text-lg" />
+              <span>Logout</span>
             </button>
           </div>
         </div>

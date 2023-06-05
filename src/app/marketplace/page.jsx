@@ -1,5 +1,5 @@
 import Marketplace from "../../components/Marketplace";
-const ChallengesPage = () => {
+const MarketplacePage = () => {
   return (
     <div>
       <Marketplace />
@@ -7,4 +7,4 @@ const ChallengesPage = () => {
   );
 };
 
-export default ChallengesPage;
+export default MarketplacePage;

@@ -1,9 +1,9 @@
 import Container from "./shared/Container";
 
-const Feed = () => {
+const Marketplace = () => {
   return (
     <Container activeRoute="marketplace">
-      <div className="p-2 flex flex-col space-y-1">
+      <div className="p-2 flex flex-col space-y-5 bg-black">
         <h1>Hello</h1>
         <h1>Hello</h1>
         <h1>Hello</h1>
@@ -13,4 +13,4 @@ const Feed = () => {
   );
 };
 
-export default Feed;
+export default Marketplace;

@@ -4,6 +4,7 @@ import {
   FaArrowDown,
   FaComment,
 } from "react-icons/fa";
+import { AiOutlineArrowDown, AiOutlineArrowUp } from "react-icons/ai";
 
 const Post = ({ username, content }) => {
   return (
@@ -13,15 +14,15 @@ const Post = ({ username, content }) => {
         <span className="text-md">{username}</span>
       </div>
       <p>{content}</p>
-      <div className="flex items-center mt-4">
-        <button className="flex items-center mr-4 text-gray-500 hover:text-gray-700">
-          <FaArrowUp className="w-4 h-4 mr-1" />
+      <div className="flex items-center mt-4 space-x-2">
+        <button className="flex items-center rounded bg-neutral-900/25 hover:bg-neutral-900/40 text-white font-bold py-1 px-2">
+          10<AiOutlineArrowUp className="w-4 h-4" />
         </button>
-        <button className="flex items-center mr-4 text-gray-500 hover:text-gray-700">
-          <FaArrowDown className="w-4 h-4 mr-1" />
+        <button className="flex items-center rounded bg-neutral-900/25 hover:bg-neutral-900/40 text-white font-bold py-1 px-2">
+          10<AiOutlineArrowDown className="w-4 h-4" />
         </button>
-        <button className="flex items-center text-gray-500 hover:text-gray-700">
-          <FaComment className="w-4 h-4 mr-1" />
+        <button className="flex items-center rounded bg-neutral-900/25 hover:bg-neutral-900/40 text-white font-bold py-1 px-2">
+          3<FaComment className="w-4 h-4 mr-1" />
         </button>
       </div>
     </div>

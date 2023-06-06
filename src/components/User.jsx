@@ -5,6 +5,10 @@ import {
   AiOutlineArrowUp,
   AiOutlineArrowDown,
   AiFillFlag,
+  AiFillInstagram,
+  AiFillGithub,
+  AiOutlineTwitter,
+  AiFillLinkedin,
 } from "react-icons/ai";
 
 const Profile = () => {
@@ -54,7 +58,39 @@ const Profile = () => {
             <h2 className="text-xl font-semibold">{user.department}</h2>
             <div className="flex items-center justify-center space-x-1">
               <AiFillFlag className="w-5 h-5" />
-              <p className="text-sm">Challenge Ranking: {user.challengeRanking}</p>
+              <p className="text-sm">
+                Challenge Ranking: {user.challengeRanking}
+              </p>
+            </div>
+            <div className="flex space-x-3 mt-4">
+              <a
+                href="https://instagram.com/example"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <AiFillInstagram className="w-6 h-6 text-black hover:text-white" />
+              </a>
+              <a
+                href="https://twitter.com/example"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <AiOutlineTwitter className="w-6 h-6 text-blue-500 hover:text-blue-700" />
+              </a>
+              <a
+                href="https://linkedin.com/in/example"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <AiFillLinkedin className="w-6 h-6 text-blue-500 hover:text-blue-700" />
+              </a>
+              <a
+                href="https://github.com/example"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <AiFillGithub className="w-6 h-6 text-black hover:text-white" />
+              </a>
             </div>
             <div className="flex space-x-2 p-2">
               {user.tags.map((tag) => (

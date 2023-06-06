@@ -5,7 +5,7 @@ import { RxActivityLog } from "react-icons/rx";
 import { BiEditAlt } from "react-icons/bi";
 import { CiSettings } from "react-icons/ci";
 
-const UserContainer = ({ children }) => {
+const UserContainer = ({ children, activeRoute }) => {
   return (
     <div className="w-full h-screen flex flex-col">
       <div className="h-full w-full flex overflow-hidden">
@@ -16,28 +16,44 @@ const UserContainer = ({ children }) => {
             </Link>
             <Link
               href="/user/profile"
-              className="flex items-center rounded bg-neutral-900/25 hover:bg-neutral-900/40 font-bold py-2 px-4 mx-5"
+              className={`flex items-center rounded ${
+                activeRoute === "profile"
+                  ? `bg-neutral-900/50`
+                  : `bg-neutral-900/25 hover:bg-neutral-900/40`
+              } font-bold py-2 px-4 mx-5`}
             >
               <AiOutlineUser className="w-8 h-8 mx-2" />
               Profile
             </Link>
             <Link
               href="/user/activities"
-              className="flex items-center rounded bg-neutral-900/25 hover:bg-neutral-900/40 font-bold py-2 px-4 mx-5"
+              className={`flex items-center rounded ${
+                activeRoute === "activities"
+                  ? `bg-neutral-900/50`
+                  : `bg-neutral-900/25 hover:bg-neutral-900/40`
+              } font-bold py-2 px-4 mx-5`}
             >
               <RxActivityLog className="w-8 h-8 mx-2" />
               Activities
             </Link>
             <Link
               href="/user/edit"
-              className="flex items-center rounded bg-neutral-900/25 hover:bg-neutral-900/40 font-bold py-2 px-4 mx-5"
+              className={`flex items-center rounded ${
+                activeRoute === "edit"
+                  ? `bg-neutral-900/50`
+                  : `bg-neutral-900/25 hover:bg-neutral-900/40`
+              } font-bold py-2 px-4 mx-5`}
             >
               <BiEditAlt className="w-8 h-8 mx-2" />
               Edit Profile
             </Link>
             <Link
               href="/user/settings"
-              className="flex items-center rounded bg-neutral-900/25 hover:bg-neutral-900/40 font-bold py-2 px-4 mx-5"
+              className={`flex items-center rounded ${
+                activeRoute === "settings"
+                  ? `bg-neutral-900/50`
+                  : `bg-neutral-900/25 hover:bg-neutral-900/40`
+              } font-bold py-2 px-4 mx-5`}
             >
               <CiSettings className="w-8 h-8 mx-2" />
               Account Settings

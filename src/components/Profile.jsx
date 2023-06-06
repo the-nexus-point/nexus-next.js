@@ -36,7 +36,7 @@ const Profile = () => {
   };
 
   return (
-    <UserContainer>
+    <UserContainer activeRoute="profile">
       <div className="w-3/4 flex flex-col overflow-y-auto">
         <div className="flex border-b border-gray-700 py-10">
           <div className="w-1/2 flex flex-col justify-center items-center space-y-2">

@@ -25,7 +25,7 @@ const Activities = () => {
   ];
 
   return (
-    <UserContainer>
+    <UserContainer activeRoute="activities">
       <div className="w-3/4 flex flex-col overflow-y-auto">
         <h1 className="text-2xl font-semibold mb-4">Activities</h1>
         <ul className="space-y-4">

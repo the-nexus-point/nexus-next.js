@@ -13,7 +13,7 @@ const Challenge = ({ challenge }) => {
           <span className="text-gray-400">{challenge.participants}</span>
         </div>
       </div>
-      <button className="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 focus:outline-none focus:shadow-outline rounded">
+      <button className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 focus:outline-none focus:shadow-outline rounded">
         Register
       </button>
     </div>

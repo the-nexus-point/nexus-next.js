@@ -1,3 +1,5 @@
+"use client";
+import { useState } from "react";
 import Link from "next/link";
 import {
   AiFillHome,
@@ -10,9 +12,25 @@ import { SiMarketo } from "react-icons/si";
 import { FaUserCircle } from "react-icons/fa";
 
 const Container = ({ children, activeRoute }) => {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+
+  const toggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
+  };
+
   return (
     <div className="w-full h-screen flex flex-col">
-      <div className="navbar flex justify-between border-b border-gray-700 p-2">
+      <div className="navbar flex justify-between border-b border-gray-700 p-2 block">
+        <button
+          className="bg-gray-700 text-white rounded-full p-2 hidden min-[320px]:max-xl:block"
+          onClick={toggleSidebar}
+        >
+          {isSidebarOpen ? (
+            <AiOutlineLogout className="text-lg" />
+          ) : (
+            <AiFillMessage className="text-lg" />
+          )}
+        </button>
         <Link href="/" className="h-14 w-14 mx-8">
           <img src="/img/nexus-website-favicon-white.png" alt="Logo" />
         </Link>
@@ -24,7 +42,11 @@ const Container = ({ children, activeRoute }) => {
         </Link>
       </div>
       <div className="h-full w-full flex overflow-hidden">
-        <div className="h-full w-1/4 flex flex-col justify-between border-r border-gray-700">
+        <div
+          className={`h-full w-1/4 flex flex-col justify-between border-r border-gray-700 ${
+            isSidebarOpen ? "z-10" : "hidden"
+          }`}
+        >
           <div className="flex flex-col space-y-5 justify-between my-5">
             <Link
               href="/feed"
@@ -75,7 +97,7 @@ const Container = ({ children, activeRoute }) => {
             </button>
           </div>
         </div>
-        <div className="w-3/4 h-full flex flex-col overflow-y-auto scrollbar-none">
+        <div className="w-3/4 h-full flex flex-col overflow-y-auto scrollbar-none sm:w-full">
           {/* Your content */}
           {children}
         </div>

@@ -1,23 +1,24 @@
 import React from "react";
 import UserContainer from "./shared/UserContainer";
+import Post from "./shared/Post";
 
 const Activities = () => {
   const activities = [
     {
       id: 1,
-      type: "post",
+      username: "harsh.2125csai1044",
       content: "Posted a new project.",
       date: "2023-05-27",
     },
     {
       id: 2,
-      type: "comment",
+      username: "harsh.2125csai1044",
       content: "Commented on a project.",
       date: "2023-05-26",
     },
     {
       id: 3,
-      type: "like",
+      username: "harsh.2125csai1044",
       content: "Liked a post.",
       date: "2023-05-25",
     },
@@ -26,16 +27,14 @@ const Activities = () => {
 
   return (
     <UserContainer activeRoute="activities">
-      <div className="w-3/4 flex flex-col overflow-y-auto">
-        <h1 className="text-2xl font-semibold mb-4">Activities</h1>
-        <ul className="space-y-4">
+      <div className="w-3/4 flex flex-col overflow-y-auto p-2 space-y-1">
           {activities.map((activity) => (
-            <li key={activity.id}>
-              <p>{activity.content}</p>
-              <p className="text-gray-500 text-sm">{activity.date}</p>
-            </li>
+            <Post
+              key={activity.id}
+              username={activity.username}
+              content={activity.content}
+            />
           ))}
-        </ul>
       </div>
     </UserContainer>
   );

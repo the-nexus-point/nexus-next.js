@@ -1,7 +1,5 @@
 import {
   FaUserCircle,
-  FaArrowUp,
-  FaArrowDown,
   FaComment,
 } from "react-icons/fa";
 import { AiOutlineArrowDown, AiOutlineArrowUp } from "react-icons/ai";

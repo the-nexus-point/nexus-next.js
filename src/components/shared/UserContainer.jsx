@@ -1,6 +1,12 @@
 import React from "react";
 import Link from "next/link";
-import { AiOutlineUser, AiFillMessage, AiOutlineLogout } from "react-icons/ai";
+import {
+  AiOutlineUser,
+  AiFillMessage,
+  AiOutlineLogout,
+  AiFillHome,
+  AiFillFlag,
+} from "react-icons/ai";
 import { RxActivityLog } from "react-icons/rx";
 import { BiEditAlt } from "react-icons/bi";
 import { CiSettings } from "react-icons/ci";
@@ -73,6 +79,53 @@ const UserContainer = ({ children, activeRoute }) => {
         <div className="">
           {/* Your content */}
           {children}
+        </div>
+      </div>
+      <div className="navbar flex justify-between border-t border-gray-700 p-2 hidden min-[320px]:max-sm:block">
+        <div className="flex justify-between">
+          <Link
+            href="/feed"
+            className={`flex items-center justify-center rounded ${
+              activeRoute === "feed"
+                ? `bg-neutral-900/50`
+                : `bg-neutral-900/25 hover:bg-neutral-900/40`
+            } font-bold py-2 px-4`}
+          >
+            <AiFillHome className="text-lg" />
+          </Link>
+          <Link
+            href="/user/activities"
+            className={`flex items-center justify-center rounded ${
+              activeRoute === "marketplace"
+                ? `bg-neutral-900/50`
+                : `bg-neutral-900/25 hover:bg-neutral-900/40`
+            } font-bold py-2 px-4`}
+          >
+            <RxActivityLog className="text-lg" />
+          </Link>
+          <Link
+            href="/user/edit"
+            className={`flex items-center justify-center rounded ${
+              activeRoute === "marketplace"
+                ? `bg-neutral-900/50`
+                : `bg-neutral-900/25 hover:bg-neutral-900/40`
+            } font-bold py-2 px-4`}
+          >
+            <BiEditAlt className="text-lg" />
+          </Link>
+          <Link
+            href="/user/settings"
+            className={`flex items-center justify-center rounded ${
+              activeRoute === "marketplace"
+                ? `bg-neutral-900/50`
+                : `bg-neutral-900/25 hover:bg-neutral-900/40`
+            } font-bold py-2 px-4`}
+          >
+            <CiSettings className="text-lg" />
+          </Link>
+          <button className="logout-button flex items-center justify-center space-x-2 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+            <AiOutlineLogout className="text-lg" />
+          </button>
         </div>
       </div>
     </div>

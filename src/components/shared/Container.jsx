@@ -88,6 +88,47 @@ const Container = ({ children, activeRoute }) => {
           {children}
         </div>
       </div>
+      <div className="navbar flex justify-between border-t border-gray-700 p-2 hidden min-[320px]:max-sm:block">
+        <div className="flex justify-between">
+          <Link
+            href="/feed"
+            className={`flex items-center justify-center rounded ${
+              activeRoute === "feed"
+                ? `bg-neutral-900/50`
+                : `bg-neutral-900/25 hover:bg-neutral-900/40`
+            } font-bold py-2 px-4`}
+          >
+            <AiFillHome className="text-lg" />
+          </Link>
+          <Link
+            href="/challenges"
+            className={`flex items-center justify-center rounded ${
+              activeRoute === "challenges"
+                ? `bg-neutral-900/50`
+                : `bg-neutral-900/25 hover:bg-neutral-900/40`
+            } font-bold py-2 px-4`}
+          >
+            <AiFillFlag className="text-lg" />
+          </Link>
+          <button className="rounded-full bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 mx-5 focus:outline-none focus:shadow-outline flex items-center justify-center space-x-2">
+            <AiOutlinePlus className="text-2xl" />
+          </button>
+          <Link
+            href="/marketplace"
+            className={`flex items-center justify-center rounded ${
+              activeRoute === "marketplace"
+                ? `bg-neutral-900/50`
+                : `bg-neutral-900/25 hover:bg-neutral-900/40`
+            } font-bold py-2 px-4`}
+          >
+            <SiMarketo className="text-lg" />
+          </Link>
+
+          <button className="logout-button flex items-center justify-center space-x-2 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+            <AiOutlineLogout className="text-lg" />
+          </button>
+        </div>
+      </div>
     </div>
   );
 };

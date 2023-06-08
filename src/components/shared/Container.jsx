@@ -36,7 +36,7 @@ const Container = ({ children, activeRoute }) => {
           <div className="flex flex-col space-y-5 justify-between my-5">
             <Link
               href="/feed"
-              className={`flex items-center rounded ${
+              className={`flex items-center justify-center rounded ${
                 activeRoute === "feed"
                   ? `bg-neutral-900/50`
                   : `bg-neutral-900/25 hover:bg-neutral-900/40`
@@ -47,7 +47,7 @@ const Container = ({ children, activeRoute }) => {
             </Link>
             <Link
               href="/challenges"
-              className={`flex items-center rounded ${
+              className={`flex items-center justify-center rounded ${
                 activeRoute === "challenges"
                   ? `bg-neutral-900/50`
                   : `bg-neutral-900/25 hover:bg-neutral-900/40`
@@ -58,7 +58,7 @@ const Container = ({ children, activeRoute }) => {
             </Link>
             <Link
               href="/marketplace"
-              className={`flex items-center rounded ${
+              className={`flex items-center justify-center rounded ${
                 activeRoute === "marketplace"
                   ? `bg-neutral-900/50`
                   : `bg-neutral-900/25 hover:bg-neutral-900/40`
@@ -77,7 +77,7 @@ const Container = ({ children, activeRoute }) => {
               <AiFillMessage className="mx-2" />
               <span className="sm:max-lg:hidden">feedback</span>
             </button>
-            <button className="logout-button flex items-center space-x-2 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+            <button className="logout-button flex items-center justify-center space-x-2 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
               <AiOutlineLogout className="text-lg" />
               <span className="sm:max-lg:hidden">Logout</span>
             </button>

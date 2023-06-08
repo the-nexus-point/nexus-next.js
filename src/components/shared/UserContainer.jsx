@@ -9,68 +9,71 @@ const UserContainer = ({ children, activeRoute }) => {
   return (
     <div className="w-full h-screen flex flex-col">
       <div className="h-full w-full flex overflow-hidden">
-        <div className="h-full w-1/4 flex flex-col justify-between border-r border-gray-700">
+        <div className="h-full w-1/4 flex flex-col justify-between border-r border-gray-700 sm:max-lg:w-1/6 min-[320px]:max-sm:hidden">
           <div className="flex flex-col space-y-5 justify-between my-5">
             <Link href="/feed" className="h-14 w-14 mx-8 cursor-pointer">
               <img src="/img/nexus-website-favicon-white.png" alt="Logo" />
             </Link>
             <Link
               href="/user/profile"
-              className={`flex items-center rounded ${
+              className={`flex items-center justify-center rounded ${
                 activeRoute === "profile"
                   ? `bg-neutral-900/50`
                   : `bg-neutral-900/25 hover:bg-neutral-900/40`
               } font-bold py-2 px-4 mx-5`}
             >
               <AiOutlineUser className="w-8 h-8 mx-2" />
-              Profile
+              <span className="sm:max-lg:hidden">Profile</span>
             </Link>
             <Link
               href="/user/activities"
-              className={`flex items-center rounded ${
+              className={`flex items-center justify-center rounded ${
                 activeRoute === "activities"
                   ? `bg-neutral-900/50`
                   : `bg-neutral-900/25 hover:bg-neutral-900/40`
               } font-bold py-2 px-4 mx-5`}
             >
               <RxActivityLog className="w-8 h-8 mx-2" />
-              Activities
+              <span className="sm:max-lg:hidden">Activities</span>
             </Link>
             <Link
               href="/user/edit"
-              className={`flex items-center rounded ${
+              className={`flex items-center justify-center rounded ${
                 activeRoute === "edit"
                   ? `bg-neutral-900/50`
                   : `bg-neutral-900/25 hover:bg-neutral-900/40`
               } font-bold py-2 px-4 mx-5`}
             >
               <BiEditAlt className="w-8 h-8 mx-2" />
-              Edit Profile
+              <span className="sm:max-lg:hidden">Edit Profile</span>
             </Link>
             <Link
               href="/user/settings"
-              className={`flex items-center rounded ${
+              className={`flex items-center justify-center rounded ${
                 activeRoute === "settings"
                   ? `bg-neutral-900/50`
                   : `bg-neutral-900/25 hover:bg-neutral-900/40`
               } font-bold py-2 px-4 mx-5`}
             >
               <CiSettings className="w-8 h-8 mx-2" />
-              Account Settings
+              <span className="sm:max-lg:hidden">Account Settings</span>
             </Link>
           </div>
-          <div className="flex justify-between mt-auto mb-5 mx-5">
-            <button className="flex items-center border border-gray-700 hover:border-gray-400 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+          <div className="flex flex-col justify-between mt-auto mx-5 mb-3 space-y-5">
+            <button className="flex items-center justify-center border border-gray-700 hover:border-gray-400 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
               <AiFillMessage className="mx-2" />
-              <span>Feedback</span>
+              <span className="sm:max-lg:hidden">Feedback</span>
             </button>
-            <button className="logout-button flex items-center space-x-2 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+            <button className="logout-button flex items-center justify-center space-x-2 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
               <AiOutlineLogout className="text-lg" />
-              <span>Logout</span>
+              <span className="sm:max-lg:hidden">Logout</span>
             </button>
           </div>
         </div>
-        {children}
+        <div className="">
+          {/* Your content */}
+          {children}
+        </div>
       </div>
     </div>
   );

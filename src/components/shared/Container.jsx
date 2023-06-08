@@ -21,16 +21,6 @@ const Container = ({ children, activeRoute }) => {
   return (
     <div className="w-full h-screen flex flex-col">
       <div className="navbar flex justify-between border-b border-gray-700 p-2 block">
-        <button
-          className="bg-gray-700 text-white rounded-full p-2 hidden min-[320px]:max-xl:block"
-          onClick={toggleSidebar}
-        >
-          {isSidebarOpen ? (
-            <AiOutlineLogout className="text-lg" />
-          ) : (
-            <AiFillMessage className="text-lg" />
-          )}
-        </button>
         <Link href="/" className="h-14 w-14 mx-8">
           <img src="/img/nexus-website-favicon-white.png" alt="Logo" />
         </Link>
@@ -42,11 +32,7 @@ const Container = ({ children, activeRoute }) => {
         </Link>
       </div>
       <div className="h-full w-full flex overflow-hidden">
-        <div
-          className={`h-full w-1/4 flex flex-col justify-between border-r border-gray-700 ${
-            isSidebarOpen ? "z-10" : "hidden"
-          }`}
-        >
+        <div className="h-full w-1/4 flex flex-col justify-between border-r border-gray-700 sm:max-lg:w-1/6 min-[320px]:max-sm:hidden">
           <div className="flex flex-col space-y-5 justify-between my-5">
             <Link
               href="/feed"
@@ -57,7 +43,7 @@ const Container = ({ children, activeRoute }) => {
               } font-bold py-2 px-4 mx-5`}
             >
               <AiFillHome className="w-8 h-8 mx-2" />
-              Feed
+              <span className="sm:max-lg:hidden">Feed</span>
             </Link>
             <Link
               href="/challenges"
@@ -68,7 +54,7 @@ const Container = ({ children, activeRoute }) => {
               } font-bold py-2 px-4 mx-5`}
             >
               <AiFillFlag className="w-8 h-8 mx-2" />
-              Challenges
+              <span className="sm:max-lg:hidden">Challenges</span>
             </Link>
             <Link
               href="/marketplace"
@@ -79,25 +65,25 @@ const Container = ({ children, activeRoute }) => {
               } font-bold py-2 px-4 mx-5`}
             >
               <SiMarketo className="w-8 h-8 mx-2" />
-              Market Place
+              <span className="sm:max-lg:hidden">Market Place</span>
             </Link>
             <button className="rounded-full bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 mx-5 focus:outline-none focus:shadow-outline flex items-center justify-center space-x-2">
               <AiOutlinePlus className="text-xl" />
-              <span>Create Post</span>
+              <span className="sm:max-lg:hidden">Create Post</span>
             </button>
           </div>
-          <div className="flex flex-shrink-0 justify-between mt-auto mb-5 mx-5">
-            <button className="flex items-center border border-gray-700 hover:border-gray-400 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+          <div className="flex flex-col justify-between mt-auto mx-5 mb-3 space-y-5">
+            <button className="flex items-center justify-center border border-gray-700 hover:border-gray-400 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
               <AiFillMessage className="mx-2" />
-              <span>feedback</span>
+              <span className="sm:max-lg:hidden">feedback</span>
             </button>
             <button className="logout-button flex items-center space-x-2 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
               <AiOutlineLogout className="text-lg" />
-              <span>Logout</span>
+              <span className="sm:max-lg:hidden">Logout</span>
             </button>
           </div>
         </div>
-        <div className="w-3/4 h-full flex flex-col overflow-y-auto scrollbar-none sm:w-full">
+        <div className="w-full h-full flex flex-col overflow-y-auto scrollbar-none ">
           {/* Your content */}
           {children}
         </div>

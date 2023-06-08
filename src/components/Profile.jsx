@@ -37,12 +37,14 @@ const Profile = () => {
 
   return (
     <UserContainer activeRoute="profile">
-      <div className="w-full flex flex-col overflow-y-auto items-center">
+      <div className="w-full flex flex-col justify-center overflow-y-auto items-center">
         <div className="flex min-[320px]:max-xl:flex-col border-b border-gray-700 py-10 space-y-5">
           <div className="w-1/2 min-[320px]:max-xl:w-full flex flex-col justify-center items-center space-y-2">
             <FaUserCircle className="text-8xl hover:text-black hover:opacity-75 cursor-pointer" />
-            <h2 className="text-lg font-semibold">{user.username}</h2>
-            <p className="px-5 py-2 text-sm">{user.bio}</p>
+            <div className="flex flex-col items-center mb-4 space-x-2">
+              <h2 className="text-lg font-semibold">{user.username}</h2>
+              <div className="px-5 py-2 text-sm">{user.bio}</div>
+            </div>
             <div className="flex items-center mt-2 space-x-2">
               <button className="flex items-center rounded bg-neutral-900/25 hover:bg-neutral-900/40 text-white font-bold py-1 px-2 space-x-1">
                 <span>{user.upvotes}</span>
@@ -92,7 +94,7 @@ const Profile = () => {
                 <AiFillGithub className="w-6 h-6 text-black hover:text-white" />
               </a>
             </div>
-            <div className="flex space-x-2 p-2">
+            <div className="grid grid-cols-3 gap-2 p-2">
               {user.tags.map((tag) => (
                 <span
                   key={tag}

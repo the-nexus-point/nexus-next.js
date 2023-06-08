@@ -76,7 +76,7 @@ const UserContainer = ({ children, activeRoute }) => {
             </button>
           </div>
         </div>
-        <div className="">
+        <div className="w-full">
           {/* Your content */}
           {children}
         </div>

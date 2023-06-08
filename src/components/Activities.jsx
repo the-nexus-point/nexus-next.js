@@ -27,7 +27,7 @@ const Activities = () => {
 
   return (
     <UserContainer activeRoute="activities">
-      <div className="w-3/4 flex flex-col overflow-y-auto p-2 space-y-1">
+      <div className="w-full flex flex-col overflow-y-auto p-2 space-y-1">
           {activities.map((activity) => (
             <Post
               key={activity.id}

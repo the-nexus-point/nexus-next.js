@@ -86,7 +86,7 @@ const Container = ({ children, activeRoute }) => {
         <div className="w-full h-full flex flex-col overflow-y-auto scrollbar-none ">
           {/* Your content */}
           {children}
-        </div>
+        </div>  
       </div>
       <div className="navbar flex justify-between border-t border-gray-700 p-2 hidden min-[320px]:max-sm:block">
         <div className="flex justify-between">

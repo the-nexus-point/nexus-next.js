@@ -39,9 +39,9 @@ const Profile = () => {
 
   return (
     <UserContainer activeRoute="profile">
-      <div className="w-full flex flex-col justify-center overflow-y-auto items-center">
-        <div className="flex min-[320px]:max-xl:flex-col border-b border-gray-700 py-10 space-y-5">
-          <div className="w-1/2 min-[320px]:max-xl:w-full flex flex-col justify-center items-center space-y-2">
+      <div className="w-full flex flex-col overflow-y-auto items-center">
+        <div className="w-full flex justify-between min-[320px]:max-xl:flex-col border-b border-gray-700 py-10 space-y-5">
+          <div className="w-full min-[320px]:max-xl:w-full flex flex-col justify-center items-center space-y-2">
             <FaUserCircle className="text-8xl hover:text-black hover:opacity-75 cursor-pointer" />
             <div className="flex flex-col items-center mb-4 space-x-2">
               <h2 className="text-lg font-semibold">{user.username}</h2>
@@ -58,7 +58,7 @@ const Profile = () => {
               </button>
             </div>
           </div>
-          <div className="w-1/2 min-[320px]:max-xl:w-full flex flex-col justify-center items-center space-y-2">
+          <div className="w-full min-[320px]:max-xl:w-full flex flex-col justify-center items-center space-y-2">
             <h2 className="text-xl font-semibold">{user.department}</h2>
             <div className="flex items-center justify-center space-x-1">
               <AiFillFlag className="w-5 h-5" />

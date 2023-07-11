@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import { usePathname } from 'next/navigation'
 import Link from "next/link";
 import {
   AiFillHome,
@@ -18,9 +19,17 @@ const Container = ({ children, activeRoute }) => {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
+  const navLinks = [
+    { href: '/feed', name: 'Feed', icon: <AiFillHome className="w-8 h-8 mx-2" /> },
+    { href: '/challenges', name: 'Challenges', icon: <AiFillFlag className="w-8 h-8 mx-2" /> },
+    { href: '/marketplace', name: 'Market Place', icon: <SiMarketo className="w-8 h-8 mx-2" /> },
+  ];
+
+  const pathname = usePathname()
+
   return (
     <div className="w-full h-screen flex flex-col">
-      <div className="navbar flex justify-between border-b border-gray-700 p-2 block">
+      <div className="navbar flex justify-between border-b border-gray-700 p-2">
         <Link href="/" className="h-14 w-14 mx-8">
           <img src="/img/nexus-website-favicon-white.png" alt="Logo" />
         </Link>
@@ -33,40 +42,22 @@ const Container = ({ children, activeRoute }) => {
       </div>
       <div className="h-full w-full flex overflow-hidden">
         <div className="h-full w-1/4 flex flex-col justify-between border-r border-gray-700 sm:max-lg:w-1/6 min-[320px]:max-sm:hidden">
+
           <div className="flex flex-col space-y-5 justify-between my-5">
-            <Link
-              href="/feed"
-              className={`flex items-center justify-center rounded ${
-                activeRoute === "feed"
-                  ? `bg-neutral-900/50`
-                  : `bg-neutral-900/25 hover:bg-neutral-900/40`
-              } font-bold py-2 px-4 mx-5`}
-            >
-              <AiFillHome className="w-8 h-8 mx-2" />
-              <span className="sm:max-lg:hidden">Feed</span>
-            </Link>
-            <Link
-              href="/challenges"
-              className={`flex items-center justify-center rounded ${
-                activeRoute === "challenges"
-                  ? `bg-neutral-900/50`
-                  : `bg-neutral-900/25 hover:bg-neutral-900/40`
-              } font-bold py-2 px-4 mx-5`}
-            >
-              <AiFillFlag className="w-8 h-8 mx-2" />
-              <span className="sm:max-lg:hidden">Challenges</span>
-            </Link>
-            <Link
-              href="/marketplace"
-              className={`flex items-center justify-center rounded ${
-                activeRoute === "marketplace"
-                  ? `bg-neutral-900/50`
-                  : `bg-neutral-900/25 hover:bg-neutral-900/40`
-              } font-bold py-2 px-4 mx-5`}
-            >
-              <SiMarketo className="w-8 h-8 mx-2" />
-              <span className="sm:max-lg:hidden">Market Place</span>
-            </Link>
+            {navLinks.map((link) => {
+              const isActive = pathname.startsWith(link.href)
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={`flex items-center justify-center rounded ${isActive ? 'bg-neutral-900/50' : 'bg-neutral-900/25 hover:bg-neutral-900/40'
+                    } font-bold py-2 px-4 mx-5`}
+                >
+                  {link.icon}
+                  <span className="sm:max-lg:hidden">{link.name}</span>
+                </Link>
+              )
+            })}
             <button className="rounded-full bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 mx-5 focus:outline-none focus:shadow-outline flex items-center justify-center space-x-2">
               <AiOutlinePlus className="text-xl" />
               <span className="sm:max-lg:hidden">Create Post</span>
@@ -86,27 +77,25 @@ const Container = ({ children, activeRoute }) => {
         <div className="w-full h-full flex flex-col overflow-y-auto scrollbar-none ">
           {/* Your content */}
           {children}
-        </div>  
+        </div>
       </div>
       <div className="navbar flex justify-between border-t border-gray-700 p-2 hidden min-[320px]:max-sm:block">
         <div className="flex justify-between">
           <Link
             href="/feed"
-            className={`flex items-center justify-center rounded ${
-              activeRoute === "feed"
-                ? `bg-neutral-900/50`
-                : `bg-neutral-900/25 hover:bg-neutral-900/40`
-            } font-bold py-2 px-4`}
+            className={`flex items-center justify-center rounded ${activeRoute === "feed"
+              ? `bg-neutral-900/50`
+              : `bg-neutral-900/25 hover:bg-neutral-900/40`
+              } font-bold py-2 px-4`}
           >
             <AiFillHome className="text-lg" />
           </Link>
           <Link
             href="/challenges"
-            className={`flex items-center justify-center rounded ${
-              activeRoute === "challenges"
-                ? `bg-neutral-900/50`
-                : `bg-neutral-900/25 hover:bg-neutral-900/40`
-            } font-bold py-2 px-4`}
+            className={`flex items-center justify-center rounded ${activeRoute === "challenges"
+              ? `bg-neutral-900/50`
+              : `bg-neutral-900/25 hover:bg-neutral-900/40`
+              } font-bold py-2 px-4`}
           >
             <AiFillFlag className="text-lg" />
           </Link>
@@ -115,11 +104,10 @@ const Container = ({ children, activeRoute }) => {
           </button>
           <Link
             href="/marketplace"
-            className={`flex items-center justify-center rounded ${
-              activeRoute === "marketplace"
-                ? `bg-neutral-900/50`
-                : `bg-neutral-900/25 hover:bg-neutral-900/40`
-            } font-bold py-2 px-4`}
+            className={`flex items-center justify-center rounded ${activeRoute === "marketplace"
+              ? `bg-neutral-900/50`
+              : `bg-neutral-900/25 hover:bg-neutral-900/40`
+              } font-bold py-2 px-4`}
           >
             <SiMarketo className="text-lg" />
           </Link>

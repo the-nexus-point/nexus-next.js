@@ -1,17 +1,26 @@
+"use client";
 import React from "react";
+import { usePathname } from 'next/navigation'
 import Link from "next/link";
 import {
   AiOutlineUser,
-  AiFillMessage,
   AiOutlineLogout,
   AiFillHome,
-  AiFillFlag,
 } from "react-icons/ai";
 import { RxActivityLog } from "react-icons/rx";
 import { BiEditAlt } from "react-icons/bi";
 import { CiSettings } from "react-icons/ci";
 
-const UserContainer = ({ children, activeRoute }) => {
+const UserContainer = ({ children }) => {
+  const navLinks = [
+    { href: "/user/profile", name: "Profile", icon: <AiOutlineUser className="w-5 h-5 mx-2" /> },
+    { href: "/user/activities", name: "Activities", icon: <RxActivityLog className="w-5 h-5 mx-2" /> },
+    { href: "/user/settings", name: "Account Settings", icon: <CiSettings className="w-5 h-5 mx-2" /> },
+  ];
+
+  const pathname = usePathname()
+
+
   return (
     <div className="w-full h-screen flex flex-col">
       <div className="h-full w-full flex overflow-hidden">
@@ -20,60 +29,28 @@ const UserContainer = ({ children, activeRoute }) => {
             <Link href="/feed" className="h-14 w-14 mx-8 cursor-pointer">
               <img src="/img/nexus-website-favicon-white.png" alt="Logo" />
             </Link>
-            <Link
-              href="/user/profile"
-              className={`flex items-center justify-center rounded ${
-                activeRoute === "profile"
-                  ? `bg-neutral-900/50`
-                  : `bg-neutral-900/25 hover:bg-neutral-900/40`
-              } font-bold py-2 px-4 mx-5`}
-            >
-              <AiOutlineUser className="w-8 h-8 mx-2" />
-              <span className="sm:max-lg:hidden">Profile</span>
-            </Link>
-            <Link
-              href="/user/activities"
-              className={`flex items-center justify-center rounded ${
-                activeRoute === "activities"
-                  ? `bg-neutral-900/50`
-                  : `bg-neutral-900/25 hover:bg-neutral-900/40`
-              } font-bold py-2 px-4 mx-5`}
-            >
-              <RxActivityLog className="w-8 h-8 mx-2" />
-              <span className="sm:max-lg:hidden">Activities</span>
-            </Link>
-            <Link
-              href="/user/edit"
-              className={`flex items-center justify-center rounded ${
-                activeRoute === "edit"
-                  ? `bg-neutral-900/50`
-                  : `bg-neutral-900/25 hover:bg-neutral-900/40`
-              } font-bold py-2 px-4 mx-5`}
-            >
-              <BiEditAlt className="w-8 h-8 mx-2" />
-              <span className="sm:max-lg:hidden">Edit Profile</span>
-            </Link>
-            <Link
-              href="/user/settings"
-              className={`flex items-center justify-center rounded ${
-                activeRoute === "settings"
-                  ? `bg-neutral-900/50`
-                  : `bg-neutral-900/25 hover:bg-neutral-900/40`
-              } font-bold py-2 px-4 mx-5`}
-            >
-              <CiSettings className="w-8 h-8 mx-2" />
-              <span className="sm:max-lg:hidden">Account Settings</span>
-            </Link>
+            {navLinks.map((link) => {
+              const isActive = pathname.startsWith(link.href)
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={`flex items-center justify-center rounded ${isActive ? "bg-neutral-900/50" : "bg-neutral-900/25 hover:bg-neutral-900/40"
+                    } font-bold py-2 px-4 mx-5`}
+                >
+                  {link.icon}
+                  <span className="sm:max-lg:hidden">{link.name}</span>
+                </Link>
+              )
+            })}
           </div>
           <div className="flex flex-col justify-between mt-auto mx-5 mb-3 space-y-5">
-            <button className="flex items-center justify-center border border-gray-700 hover:border-gray-400 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
-              <AiFillMessage className="mx-2" />
-              <span className="sm:max-lg:hidden">Feedback</span>
-            </button>
-            <button className="logout-button flex items-center justify-center space-x-2 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+            <Link
+              href="/logout"
+              className="logout-button flex items-center justify-center space-x-2 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
               <AiOutlineLogout className="text-lg" />
               <span className="sm:max-lg:hidden">Logout</span>
-            </button>
+            </Link>
           </div>
         </div>
         <div className="w-full">
@@ -81,54 +58,36 @@ const UserContainer = ({ children, activeRoute }) => {
           {children}
         </div>
       </div>
-      <div className="navbar flex justify-between border-t border-gray-700 p-2 hidden min-[320px]:max-sm:block">
+      <div className="navbar fixed bottom-0 w-full bg-neutral-900 flex justify-between border-t border-gray-700 p-2 hidden min-[320px]:max-sm:block">
         <div className="flex justify-between">
           <Link
             href="/feed"
-            className={`flex items-center justify-center rounded ${
-              activeRoute === "feed"
-                ? `bg-neutral-900/50`
-                : `bg-neutral-900/25 hover:bg-neutral-900/40`
-            } font-bold py-2 px-4`}
+            className={`flex items-center justify-center rounded ${"bg-neutral-900/25 hover:bg-neutral-900/40"} font-bold py-2 px-4`}
           >
-            <AiFillHome className="text-lg" />
+            <AiFillHome className="w-5 h-5 mx-2 text-lg" />
           </Link>
+          {navLinks.map((link) => {
+            const isActive = pathname.startsWith(link.href)
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={`flex items-center justify-center rounded ${isActive ? "bg-neutral-900/50" : "bg-neutral-900/25 hover:bg-neutral-900/40"
+                  } font-bold py-2 px-4`}
+              >
+                {link.icon}
+              </Link>
+            )
+          })}
           <Link
-            href="/user/activities"
-            className={`flex items-center justify-center rounded ${
-              activeRoute === "marketplace"
-                ? `bg-neutral-900/50`
-                : `bg-neutral-900/25 hover:bg-neutral-900/40`
-            } font-bold py-2 px-4`}
-          >
-            <RxActivityLog className="text-lg" />
-          </Link>
-          <Link
-            href="/user/edit"
-            className={`flex items-center justify-center rounded ${
-              activeRoute === "marketplace"
-                ? `bg-neutral-900/50`
-                : `bg-neutral-900/25 hover:bg-neutral-900/40`
-            } font-bold py-2 px-4`}
-          >
-            <BiEditAlt className="text-lg" />
-          </Link>
-          <Link
-            href="/user/settings"
-            className={`flex items-center justify-center rounded ${
-              activeRoute === "marketplace"
-                ? `bg-neutral-900/50`
-                : `bg-neutral-900/25 hover:bg-neutral-900/40`
-            } font-bold py-2 px-4`}
-          >
-            <CiSettings className="text-lg" />
-          </Link>
-          <button className="logout-button flex items-center justify-center space-x-2 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+            href="/logout"
+            className="logout-button flex items-center justify-center space-x-2 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
             <AiOutlineLogout className="text-lg" />
-          </button>
+          </Link>
         </div>
       </div>
     </div>
   );
 };
+
 export default UserContainer;

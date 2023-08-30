@@ -1,3 +1,4 @@
+"use client"
 import Post from "./shared/Post";
 
 const Feed = () => {

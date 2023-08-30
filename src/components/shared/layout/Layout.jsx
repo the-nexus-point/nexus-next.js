@@ -54,7 +54,7 @@ const Layout = ({ children, }) => {
           <div className="flex flex-col justify-between mt-auto mx-5 mb-3 space-y-5">
           </div>
         </div>
-        <div className="w-full h-full flex flex-col overflow-y-auto scrollbar-none rounded-lg  bg-zinc-900 ">
+        <div className="w-full h-full p-2 flex flex-col overflow-y-auto scrollbar-none rounded-2xl space-y-10 bg-zinc-900 ">
           {/* Your content */}
           {children}
         </div>

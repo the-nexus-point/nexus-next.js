@@ -33,7 +33,7 @@ const Challenges = () => {
   ];
 
   return (
-      <div className="p-2 flex flex-col overflow-y-auto space-y-1">
+      <div className="p-2 flex flex-col space-y-5">
         {challenges.map((challenge) => (
           <Challenge key={challenge.id} challenge={challenge} />
         ))}

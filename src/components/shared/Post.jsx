@@ -6,7 +6,7 @@ import { AiOutlineArrowDown, AiOutlineArrowUp } from "react-icons/ai";
 
 const Post = ({ username, content }) => {
   return (
-    <div className="border border-neutral-700 p-5 rounded bg-neutral-900/10 hover:bg-neutral-900/20 hover:cursor-pointer">
+    <div className="border border-zinc-700 p-5 rounded-xl bg-zinc-900/10 hover:bg-zinc-800/20 hover:cursor-pointer">
       <div className="flex items-center mb-4 space-x-2">
         <FaUserCircle className="w-8 h-8" />
         <span className="text-md">{username}</span>

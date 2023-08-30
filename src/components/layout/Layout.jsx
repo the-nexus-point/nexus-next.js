@@ -59,7 +59,7 @@ const Layout = ({ children, }) => {
           {children}
         </div>
       </div>
-      <div className="navbar fixed bottom-0 w-full bg-neutral-900 flex justify-between border-t border-gray-700 p-2 hidden min-[320px]:max-sm:block">
+      <div className="navbar fixed bottom-0 w-full bg-neutral-900 flex justify-between border-t border-gray-700 p-2 sm:hidden  min-[320px]:max-sm:block">
         <div className="flex justify-between">
           <Link
             href="/create-post"

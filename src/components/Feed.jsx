@@ -1,9 +1,7 @@
-import Container from "./shared/Container";
 import Post from "./shared/Post";
 
 const Feed = () => {
   return (
-    <Container activeRoute="feed">
       <div className="p-2 flex flex-col space-y-1 bg-[#141718] ">
         <Post
           username="harsh.2125csai1044"
@@ -39,7 +37,6 @@ const Feed = () => {
           content="Lorem ipsum dolor sit, amet consect numquam asperiores eligendi reiciendis adipisci veniam, unde modi consequuntur, expedita minus molestias. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tenetur, vero impedit! Atque illo a suscipit sit quibusdam? Facere, numquam asperiores eligendi reiciendis adipisci veniam, unde modi consequuntur, expedita minus molestias. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tenetur, vero impedit! Atque illo a suscipit sit quibusdam? Facere, numquam asperiores eligendi reiciendis adipisci veniam, unde modi consequuntur, expedita minus molestias. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tenetur, vero impedit! Atque illo a suscipit sit quibusdam? Facere, numquam asperiores eligendi reiciendis adipisci veniam, unde modi consequuntur, expedita minus molestias. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tenetur, vero impedit! Atque illo a suscipit sit quibusdam? Facere, numquam asperiores eligendi reiciendis adipisci veniam, unde modi consequuntur, expedita minus molestias. "
         />
       </div>
-    </Container>
   );
 };
 

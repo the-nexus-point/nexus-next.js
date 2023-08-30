@@ -9,6 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@fontsource/roboto": "^5.0.8",
+    "@mui/icons-material": "^5.14.7",
     "autoprefixer": "10.4.14",
     "next": "13.4.4",
     "postcss": "8.4.24",

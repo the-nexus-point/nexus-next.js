@@ -10,12 +10,7 @@ import {
 } from "react-icons/ai";
 import { FaUserCircle } from "react-icons/fa";
 
-const Container = ({ children, }) => {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
-
-  const toggleSidebar = () => {
-    setIsSidebarOpen(!isSidebarOpen);
-  };
+const Layout = ({ children, }) => {
 
   const navLinks = [
     { href: '/feed', name: 'Feed', icon: <AiFillHome className="w-5 h-5 mx-2" /> },
@@ -26,13 +21,13 @@ const Container = ({ children, }) => {
 
   return (
     <div className="w-full h-screen flex flex-col bg-black">
-      <div className="navbar flex justify-between p-2">
+      <div className="navbar flex justify-between items-center p-2">
         <Link href="/" className="h-14 w-14 mx-8">
           <img src="/img/nexus-website-favicon-white.png" alt="Logo" />
         </Link>
         <Link
           href="/user"
-          className="text-3xl mx-8 hover:text-black hover:opacity-75"
+          className="text-3xl mx-8 hover:text-gray hover:opacity-75"
         >
           <FaUserCircle className="" />
         </Link>
@@ -46,7 +41,7 @@ const Container = ({ children, }) => {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`flex items-center justify-center rounded ${isActive ? 'bg-neutral-900/50' : 'bg-neutral-900/25 hover:bg-neutral-900/40'
+                  className={`flex items-center justify-center rounded ${isActive ? 'bg-neutral-700/50' : 'bg-neutral-900/25 hover:bg-neutral-800/40'
                     } font-bold py-2 px-4 mx-5`}
                 >
                   {link.icon}
@@ -106,4 +101,4 @@ const Container = ({ children, }) => {
   );
 };
 
-export default Container;
+export default Layout;

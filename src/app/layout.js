@@ -1,3 +1,4 @@
+import Layout from "@/components/shared/Layout";
 import "./globals.css";
 import { Inter } from "next/font/google";
 
@@ -10,10 +11,8 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} text-white bg-[#141718] `}>
-        <div className="gradient-background">
-          {children}
-        </div>
+      <body className={`${inter.className} text-white`}>
+          <Layout>{children}</Layout>
       </body>
     </html>
   );

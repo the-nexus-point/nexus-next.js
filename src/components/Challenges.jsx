@@ -1,5 +1,4 @@
 import React from "react";
-import Container from "./shared/Container";
 import Challenge from "./shared/Challenge";
 import { FaHackerrank } from "react-icons/fa";
 import { SiCodechef } from "react-icons/si";
@@ -34,13 +33,11 @@ const Challenges = () => {
   ];
 
   return (
-    <Container activeRoute="challenges">
-      <div className="p-2 flex flex-col space-y-1">
+      <div className="p-2 flex flex-col overflow-y-auto space-y-1">
         {challenges.map((challenge) => (
           <Challenge key={challenge.id} challenge={challenge} />
         ))}
       </div>
-    </Container>
   );
 };
 

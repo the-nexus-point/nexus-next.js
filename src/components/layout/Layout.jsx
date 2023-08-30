@@ -5,10 +5,8 @@ import {
   AiFillHome,
   AiFillFlag,
   AiOutlinePlus,
-  AiOutlineLogout,
 } from "react-icons/ai";
-import { FaUserCircle } from "react-icons/fa";
-import Profile from './profile/Profile';
+// import Profile from './profile/Profile';
 
 const Layout = ({ children, }) => {
 
@@ -25,7 +23,7 @@ const Layout = ({ children, }) => {
         <Link href="/" className="h-14 w-14 mx-8">
           <img src="/img/nexus-website-favicon-white.png" alt="Logo" />
         </Link>
-        <Profile />
+        {/* <Profile /> */}
       </div>
       <div className="h-full w-full flex overflow-hidden">
         <div className="h-full w-1/4 flex flex-col justify-between sm:max-lg:w-1/6 min-[320px]:max-sm:hidden">

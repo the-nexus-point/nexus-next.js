@@ -9,7 +9,7 @@ import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
-import AccountSettings from '@/components/AccountSettings'
+import AccountSettings from '@/components/profile/AccountSettings'
 
 export default function Profile() {
     const [anchorEl, setAnchorEl] = React.useState(null);

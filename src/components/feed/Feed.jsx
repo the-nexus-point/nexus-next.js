@@ -1,5 +1,5 @@
 "use client"
-import Post from "./shared/Post";
+import Post from "./Post";
 
 const Feed = () => {
   return (

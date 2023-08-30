@@ -1,5 +1,5 @@
 import React from "react";
-import Challenge from "./shared/Challenge";
+import Challenge from "./Challenge";
 import { FaHackerrank } from "react-icons/fa";
 import { SiCodechef } from "react-icons/si";
 

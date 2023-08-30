@@ -1,4 +1,4 @@
-import Layout from "@/components/shared/layout/Layout";
+import Layout from "@/components/layout/Layout";
 import "./globals.css";
 import { Inter } from "next/font/google";
 

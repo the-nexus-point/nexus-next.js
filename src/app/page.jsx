@@ -1,7 +1,6 @@
-import Feed from "@/components/Feed";
-import Home from "@/components/Home";
+import Feed from "@/components/feed/Feed";
 
 
 export default () => {
-  return  <Home />;
+  return  <Feed />;
 };

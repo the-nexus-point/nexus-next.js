@@ -12,7 +12,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${inter.className} text-white`}>
-          <Layout>{children}</Layout>
+        <Layout>{children}</Layout>
       </body>
     </html>
   );

@@ -1,4 +1,3 @@
-"use client"
 import Post from "./Post";
 
 const Feed = () => {

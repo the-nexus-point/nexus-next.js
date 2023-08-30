@@ -1,22 +1,9 @@
 "use client";
-import { usePathname } from 'next/navigation'
 import Link from "next/link";
-import {
-  AiFillHome,
-  AiFillFlag,
-  AiOutlinePlus,
-} from "react-icons/ai";
 import LeftSidebar from './sidebar/LeftSidebar';
 import MobileNav from './mobileNav/Nav';
 
 const Layout = ({ children, }) => {
-
-  const navLinks = [
-    { href: '/feed', name: 'Feed', icon: <AiFillHome className="w-5 h-5 mx-2" /> },
-    { href: '/challenges', name: 'Challenges', icon: <AiFillFlag className="w-5 h-5 mx-2" /> },
-  ];
-
-  const pathname = usePathname()
 
   return (
     <div className="w-full h-screen flex flex-col bg-zinc-950">

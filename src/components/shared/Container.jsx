@@ -25,8 +25,8 @@ const Container = ({ children, }) => {
   const pathname = usePathname()
 
   return (
-    <div className="w-full h-screen flex flex-col">
-      <div className="navbar flex justify-between border-b border-gray-700 p-2">
+    <div className="w-full h-screen flex flex-col bg-black">
+      <div className="navbar flex justify-between p-2">
         <Link href="/" className="h-14 w-14 mx-8">
           <img src="/img/nexus-website-favicon-white.png" alt="Logo" />
         </Link>
@@ -38,8 +38,7 @@ const Container = ({ children, }) => {
         </Link>
       </div>
       <div className="h-full w-full flex overflow-hidden">
-        <div className="h-full w-1/4 flex flex-col justify-between border-r border-gray-700 sm:max-lg:w-1/6 min-[320px]:max-sm:hidden">
-
+        <div className="h-full w-1/4 flex flex-col justify-between sm:max-lg:w-1/6 min-[320px]:max-sm:hidden">
           <div className="flex flex-col space-y-5 justify-between my-5">
             {navLinks.map((link) => {
               const isActive = pathname.startsWith(link.href)
@@ -57,7 +56,7 @@ const Container = ({ children, }) => {
             })}
             <Link
               href="/create-post"
-              className="rounded-full bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 mx-5 focus:outline-none focus:shadow-outline flex items-center justify-center space-x-2">
+              className="rounded-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 mx-5 focus:outline-none focus:shadow-outline flex items-center justify-center space-x-2">
               <AiOutlinePlus className="text-xl" />
               <span className="sm:max-lg:hidden">Create Post</span>
             </Link>
@@ -65,13 +64,13 @@ const Container = ({ children, }) => {
           <div className="flex flex-col justify-between mt-auto mx-5 mb-3 space-y-5">
             <Link
               href="/logout"
-              className="logout-button flex items-center justify-center space-x-2 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+              className="logout-button flex items-center justify-center space-x-2 bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded">
               <AiOutlineLogout className="text-lg" />
               <span className="sm:max-lg:hidden">Logout</span>
             </Link>
           </div>
         </div>
-        <div className="w-full h-full flex flex-col overflow-y-auto scrollbar-none ">
+        <div className="w-full h-full flex flex-col overflow-y-auto scrollbar-none rounded-lg">
           {/* Your content */}
           {children}
         </div>

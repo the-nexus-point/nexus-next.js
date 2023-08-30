@@ -7,22 +7,32 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
-import PersonAdd from '@mui/icons-material/PersonAdd';
 import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
+import AccountSettings from '@/components/AccountSettings'
 
 export default function Profile() {
     const [anchorEl, setAnchorEl] = React.useState(null);
+    const [isSettingsOpen, setSettingsOpen] = React.useState(false);
+
     const open = Boolean(anchorEl);
+
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
     };
+
     const handleClose = () => {
         setAnchorEl(null);
     };
+
+    const handleClickOpenSettings = () => {
+        setSettingsOpen(true);
+    };
+
+
     return (
         <React.Fragment>
-            <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' ,}}>
+            <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center', }}>
                 <Tooltip title="Account settings">
                     <IconButton
                         onClick={handleClick}
@@ -69,26 +79,27 @@ export default function Profile() {
                         },
                         backgroundColor: 'black',
                         color: 'white',
-                        p:2
+                        p: 2
                     },
                 }}
                 transformOrigin={{ horizontal: 'right', vertical: 'top' }}
                 anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
             >
-                <MenuItem onClick={handleClose}>
+                <MenuItem >
                     <Avatar /> Profile
                 </MenuItem>
-                <MenuItem onClick={handleClose}>
+                <MenuItem >
                     <Avatar /> My account
                 </MenuItem>
                 <Divider />
-                <MenuItem onClick={handleClose}>
+                <MenuItem onClick={() => handleClickOpenSettings()}>
                     <ListItemIcon>
                         <Settings sx={{ color: 'white' }} fontSize="small" />
                     </ListItemIcon>
                     Settings
+                    <AccountSettings isSettingsOpen={isSettingsOpen} handleCloseSettings={()=>setSettingsOpen(false)} />
                 </MenuItem>
-                <MenuItem onClick={handleClose}>
+                <MenuItem>
                     <ListItemIcon>
                         <Logout sx={{ color: 'white' }} fontSize="small" />
                     </ListItemIcon>

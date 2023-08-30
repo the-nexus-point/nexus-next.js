@@ -6,7 +6,6 @@ import {
   AiFillFlag,
   AiOutlinePlus,
 } from "react-icons/ai";
-// import Profile from './profile/Profile';
 
 const Layout = ({ children, }) => {
 

@@ -27,7 +27,7 @@ const LeftSidebar = () => {
                         <Link
                             key={link.href}
                             href={link.href}
-                            className={`flex items-center justify-center rounded ${isActive ? 'bg-zinc-700/50' : 'bg-zinc-900/25 hover:bg-zinc-800/40'
+                            className={`flex items-center rounded ${isActive ? 'bg-zinc-700/50' : 'bg-zinc-900/25 hover:bg-zinc-800/40'
                                 } font-bold py-2 px-4 mx-5`}
                         >
                             {link.icon}

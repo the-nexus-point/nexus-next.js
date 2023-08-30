@@ -2,6 +2,7 @@
 import Link from "next/link";
 import LeftSidebar from './sidebar/LeftSidebar';
 import MobileNav from './mobileNav/Nav';
+import Profile from "./profile/Profile";
 
 const Layout = ({ children, }) => {
 
@@ -11,7 +12,7 @@ const Layout = ({ children, }) => {
         <Link href="/" className="h-14 w-14 mx-8">
           <img src="/img/nexus-website-favicon-white.png" alt="Logo" />
         </Link>
-        {/* <Profile /> */}
+        <Profile />
       </div>
       <div className="h-full w-full flex overflow-hidden">
         <LeftSidebar />

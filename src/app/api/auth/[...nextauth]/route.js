@@ -9,8 +9,9 @@ const authOptions = {
     }),
   ],
   callbacks: {
-    async signOut() {
+    async signOut({ user }) {
       // Custom sign-out logic (if needed)
+      console.log(user);
     },
   },
 };

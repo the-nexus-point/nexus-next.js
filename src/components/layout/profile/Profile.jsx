@@ -17,8 +17,7 @@ import { signOut, useSession } from 'next-auth/react';
 const Profile = () => {
     const { data: session } = useSession(); // Use the useSession hook to get session data
     const userName = session?.user?.name;
-    console.log(session?.user);
-
+    
     return (
         <div>
             <Menu className="">

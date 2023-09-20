@@ -8,6 +8,11 @@ const authOptions = {
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     }),
   ],
+  callbacks: {
+    async signOut() {
+      // Custom sign-out logic (if needed)
+    },
+  },
 };
 
 const handler = NextAuth(authOptions);

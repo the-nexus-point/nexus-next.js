@@ -1,4 +1,4 @@
-import SignUp from "@/components/register/SignUp";
+import SignUp from "@/components/signin/SignUp";
 import React from "react";
 
 const FeedPage = () => {

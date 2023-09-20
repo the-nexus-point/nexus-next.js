@@ -1,10 +1,10 @@
-import Feed from "@/components/feed/Feed";
+import Profile from "@/components/account/Profile";
 import React from "react";
 
 const User = () => {
   return (
     <div>
-      <Feed />
+      <Profile />
     </div>
   );
 };

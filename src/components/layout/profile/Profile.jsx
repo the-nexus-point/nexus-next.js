@@ -1,3 +1,4 @@
+"use client"
 import React from 'react';
 import {
     Menu,
@@ -12,6 +13,8 @@ import { AiOutlineLogout } from 'react-icons/ai';
 import { MdOutlineSettings } from 'react-icons/md';
 import { BsFillPersonFill } from 'react-icons/bs';
 import Link from 'next/link';
+import { useSession, signIn, signOut } from "next-auth/react"; // To log out with logout button
+
 
 const Profile = () => {
     return (
@@ -20,7 +23,7 @@ const Profile = () => {
                 <MenuButton as={Avatar} size="sm" cursor={'pointer'} src="/path/to/avatar.jpg" />
                 <MenuList className="bg-black">
                     <MenuGroup title='yourname'>
-                        <Link href="/[id]" as="/yourusername" >
+                        <Link href={`/[id]`} as="/yourusername" >
                             <MenuItem className='hover:bg-zinc-800' ><BsFillPersonFill className="text-xl mx-2" />  Account</MenuItem>
                         </Link>
                     </MenuGroup>

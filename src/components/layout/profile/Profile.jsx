@@ -6,11 +6,12 @@ import {
     MenuItem,
     MenuGroup,
     MenuDivider,
-    Avatar, 
+    Avatar,
 } from '@chakra-ui/react';
 import { AiOutlineLogout } from 'react-icons/ai';
 import { MdOutlineSettings } from 'react-icons/md';
 import { BsFillPersonFill } from 'react-icons/bs';
+import Link from 'next/link';
 
 const Profile = () => {
     return (
@@ -19,7 +20,9 @@ const Profile = () => {
                 <MenuButton as={Avatar} size="sm" cursor={'pointer'} src="/path/to/avatar.jpg" />
                 <MenuList className="bg-black">
                     <MenuGroup title='yourname'>
-                        <MenuItem className='hover:bg-zinc-800' ><BsFillPersonFill className="text-xl mx-2" />  Account</MenuItem>
+                        <Link href="/[id]" as="/yourusername" >
+                            <MenuItem className='hover:bg-zinc-800' ><BsFillPersonFill className="text-xl mx-2" />  Account</MenuItem>
+                        </Link>
                     </MenuGroup>
                     <MenuDivider />
                     <MenuGroup title='Help'>

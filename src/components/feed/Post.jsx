@@ -1,8 +1,7 @@
 import {
   FaUserCircle,
-  FaComment,
 } from "react-icons/fa";
-import { AiOutlineArrowDown, AiOutlineArrowUp } from "react-icons/ai";
+import { AiOutlineArrowDown, AiOutlineArrowUp, AiOutlineCalendar } from "react-icons/ai";
 
 const Post = ({ username, content }) => {
   return (
@@ -13,15 +12,17 @@ const Post = ({ username, content }) => {
       </div>
       <p>{content}</p>
       <div className="flex items-center mt-4 space-x-2">
-        <button className="flex text-sm items-center rounded bg-neutral-900/25 hover:bg-neutral-900/40 text-white font-bold py-1 px-2 space-x-1">
+        <button className="flex text-sm items-center rounded bg-neutral-900/25 hover:bg-neutral-700/40 text-white font-bold py-1 px-2 space-x-1">
           <span>100</span><AiOutlineArrowUp className="w-4 h-4" />
         </button>
-        <button className="flex text-sm items-center rounded bg-neutral-900/25 hover:bg-neutral-900/40 text-white font-bold py-1 px-2 space-x-1">
-        <span>10</span>
+        <button className="flex text-sm items-center rounded bg-neutral-900/25 hover:bg-neutral-700/40 text-white font-bold py-1 px-2 space-x-1">
+          <span>10</span>
           <AiOutlineArrowDown className="w-4 h-4" />
         </button>
-        <button className="flex text-sm items-center rounded bg-neutral-900/25 hover:bg-neutral-900/40 text-white font-bold py-1 px-2 space-x-1">
-        <span>3</span><FaComment className="w-4 h-4 mr-1" />
+        <button className="flex text-sm items-center rounded bg-neutral-900/25 cursor-auto text-white font-bold py-1 px-2 space-x-1">
+
+          <AiOutlineCalendar className="w-4 h-4" />
+          <span>18/5/23</span>
         </button>
       </div>
     </div>

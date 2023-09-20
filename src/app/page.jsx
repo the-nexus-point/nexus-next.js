@@ -1,10 +1,5 @@
-import Feed from "@/components/feed/Feed";
-import { signIn } from 'next-auth/react';
-
+import { redirect } from 'next/navigation';
 
 export default () => {
-  return <div>
-    <h1>Login Page</h1>
-    <button onClick={() => signIn()}>Sign in with Google</button>
-  </div>;
+  redirect('/feed');
 };

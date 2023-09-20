@@ -1,10 +1,21 @@
+import { connect } from "mongoose";
+
 const { connectToDatabase } = require("@/DB/dbConfig");
 const { default: User } = require("@/models/User");
-const { NextResponse } = require("next/server");
+const { NextResponse, NextRequest } = require("next/server");
 
-export async function POST(req) {
-  const { name, email } = await req.json();
+connect();
+
+export async function POST(request) {
+  const { name, email } = await request.json();
   await connectToDatabase();
   await User.create({ name, email });
-  return NextResponse.json({ message: "User Registered" });
+
+  try {
+    const reqBody = await request.json();
+    const { name, email } = reqBody;
+    console.log(reqBody);
+  } catch (error) {
+    return NextResponse.json({ error: error.message }, { status: 500 });
+  }
 }

@@ -1,10 +1,19 @@
 "use client"
 import { signIn } from "next-auth/react";
+import { useSession } from 'next-auth/react';
+import { useRouter } from "next/navigation";
 import React from "react";
 import { FcGoogle } from "react-icons/fc";
 
 
-const FeedPage = () => {
+
+const SingIn = () => {
+    const { data: session } = useSession();
+    const router = useRouter();
+
+    if (session) {
+        router.replace('/');
+    }
     return (
         <div className="flex flex-col justify-center items-center h-screen">
             <h3 className="text-center mb-5">Sign In with College Id</h3>
@@ -19,4 +28,4 @@ const FeedPage = () => {
     );
 };
 
-export default FeedPage;
+export default SingIn;

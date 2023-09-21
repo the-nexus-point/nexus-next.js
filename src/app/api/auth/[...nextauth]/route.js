@@ -8,11 +8,8 @@ const authOptions = {
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     }),
   ],
-  callbacks: {
-    async signOut({ user }) {
-      // Custom sign-out logic (if needed)
-      console.log(user);
-    },
+  pages: {
+    signIn: "/signup", // Path to your custom sign-in page
   },
 };
 

@@ -7,14 +7,13 @@ const { NextResponse, NextRequest } = require("next/server");
 connect();
 
 export async function POST(request) {
-  const { name, email } = await request.json();
-  await connectToDatabase();
-  await User.create({ name, email });
-
   try {
     const reqBody = await request.json();
-    const { name, email } = reqBody;
     console.log(reqBody);
+    const { name, email } = reqBody;
+    const newUser = new User({ name, email });
+    const reqUser = await newUser.save();
+    console.log(reqUser);
   } catch (error) {
     return NextResponse.json({ error: error.message }, { status: 500 });
   }

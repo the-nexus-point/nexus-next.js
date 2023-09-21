@@ -10,10 +10,15 @@ import { FcGoogle } from "react-icons/fc";
 const SingIn = () => {
     const { data: session } = useSession();
     const router = useRouter();
+    try {
+        if (session) {
+            router.replace('/');
+        }
+    } catch (error) {
+        console.log(error);
 
-    if (session) {
-        router.replace('/');
     }
+
     return (
         <div className="flex flex-col justify-center items-center h-screen">
             <h3 className="text-center mb-5">Sign In with College Id</h3>

@@ -9,7 +9,17 @@ const authOptions = {
     }),
   ],
   pages: {
-    signIn: "/signup", // Path to your custom sign-in page
+    signIn: "/auth/signin", // Path to your custom sign-in page
+  },
+  callbacks: {
+    jwt(params) {
+      // update token
+      if (params.user?.role) {
+        params.token.role = params.user.role;
+      }
+      // return final_token
+      return params.token;
+    },
   },
 };
 

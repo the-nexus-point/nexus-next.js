@@ -3,6 +3,7 @@ import Link from "next/link";
 import LeftSidebar from './sidebar/LeftSidebar';
 import MobileNav from './mobileNav/Nav';
 import Profile from "./profile/Profile";
+import Logout from "../logout";
 
 const Layout = ({ children, }) => {
 
@@ -13,6 +14,7 @@ const Layout = ({ children, }) => {
           <img src="/img/nexus-website-favicon-white.png" alt="Logo" />
         </Link>
         <Profile />
+        {/* <Logout /> */}
       </div>
       <div className="h-full w-full flex overflow-hidden">
         <LeftSidebar />

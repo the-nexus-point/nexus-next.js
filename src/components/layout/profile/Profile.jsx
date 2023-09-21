@@ -7,17 +7,30 @@ import {
     MenuGroup,
     MenuDivider,
     Avatar,
+    Button,
 } from '@chakra-ui/react';
 import { AiOutlineLogout } from 'react-icons/ai';
 import { MdOutlineSettings } from 'react-icons/md';
 import { BsFillPersonFill } from 'react-icons/bs';
 import { signOut, useSession } from 'next-auth/react';
 
-
 const Profile = () => {
     const { data: session } = useSession(); // Use the useSession hook to get session data
     const userName = session?.user?.name;
-    
+    console.log('Session Data:', session);
+
+
+    const handleSignOut = async () => {
+        const response = await signOut({ redirect: false, callbackUrl: '/' });
+
+        if (response.error) {
+            console.error('Sign out error:', response.error);
+        } else {
+            // The user has been successfully signed out
+        }
+    }
+
+
     return (
         <div>
             <Menu className="">
@@ -29,7 +42,7 @@ const Profile = () => {
                     <MenuDivider />
                     <MenuGroup title='Help'>
                         <MenuItem className='hover:bg-zinc-800'><MdOutlineSettings className="text-xl mx-2" /> Settings</MenuItem>
-                        <MenuItem className='hover:bg-zinc-800'><AiOutlineLogout className="text-xl mx-2 text-red-500" onClick={() => signOut()} /> Logout</MenuItem>
+                        <MenuItem className='hover:bg-zinc-800' onClick={handleSignOut}><AiOutlineLogout className="text-xl mx-2 text-red-500" />Sign Out</MenuItem>
                     </MenuGroup>
                 </MenuList>
             </Menu>

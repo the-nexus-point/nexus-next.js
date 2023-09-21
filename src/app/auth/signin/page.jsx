@@ -7,7 +7,7 @@ import { FcGoogle } from "react-icons/fc";
 
 
 
-const SingIn = () => {
+const SignIn = () => {
     const { data: session } = useSession();
     const router = useRouter();
     try {
@@ -33,4 +33,4 @@ const SingIn = () => {
     );
 };
 
-export default SingIn;
+export default SignIn;

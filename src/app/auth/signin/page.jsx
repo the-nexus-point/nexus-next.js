@@ -5,20 +5,13 @@ import { useRouter } from "next/navigation";
 import React from "react";
 import { FcGoogle } from "react-icons/fc";
 
-
-
 const SignIn = () => {
     const { data: session } = useSession();
     const router = useRouter();
-    try {
-        if (session) {
-            router.replace('/');
-        }
-    } catch (error) {
-        console.log(error);
-
+    if (session) {
+        router.replace('/');
+        return null;
     }
-
     return (
         <div className="flex flex-col justify-center items-center h-screen">
             <h3 className="text-center mb-5">Sign In with College Id</h3>

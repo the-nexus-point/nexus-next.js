@@ -11,10 +11,9 @@ const userSchema = new mongoose.Schema({
     techStack: [String],
   },
   media: {
-    upvote: Number,
-    downvote: Number,
-    post: Number,
-    comment: Number,
+    upvotes: Number,
+    downvotes: Number,
+    posts: Number,
   },
   challenges: {
     codechef: { type: mongoose.Schema.Types.ObjectId, ref: "Challenge" }, // Reference to the Challenge model

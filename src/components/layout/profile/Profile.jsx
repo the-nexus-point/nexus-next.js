@@ -13,7 +13,6 @@ import { AiOutlineLogout } from 'react-icons/ai';
 import { MdOutlineSettings } from 'react-icons/md';
 import { BsFillPersonFill } from 'react-icons/bs';
 import { signOut, useSession } from 'next-auth/react';
-import { redirect } from 'next/navigation';
 import Link from "next/link";
 
 const Profile = () => {

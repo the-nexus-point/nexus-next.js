@@ -1,9 +1,15 @@
+"use client";
 import { Box, Flex, Image, Tag, Text } from '@chakra-ui/react';
 import { Tab, TabList, TabPanel, TabPanels, Tabs } from '@chakra-ui/react';
+import { useSession } from 'next-auth/react';
 import React from 'react';
-import { AiFillTrophy, AiOutlineArrowDown, AiOutlineArrowUp } from 'react-icons/ai';
+import { AiFillTrophy, AiOutlineArrowDown, AiOutlineArrowUp, AiOutlineUser } from 'react-icons/ai';
 
 function Profile() {
+    const { data: session } = useSession();
+    const userName = session?.user?.name;
+    const Avatar = session?.user?.image;
+    const email = session?.user?.email;
     return (
         <>
             <div>
@@ -13,8 +19,8 @@ function Profile() {
                             <Image
                                 borderRadius='full'
                                 boxSize='150px'
-                                src='https://bit.ly/dan-abramov'
-                                alt='Dan Abramov'
+                                src={Avatar}
+                                alt={userName?.charAt(0)}
                             />
                             <div className='mx-3 justify-center items-center flex flex-col space-y-3'>
                                 <Tag><AiOutlineArrowDown className="w-4 h-4" />324</Tag>
@@ -23,8 +29,8 @@ function Profile() {
                             </div>
                         </div>
                         <div className='flex flex-col justify-center items-center'>
-                            <Text className='px-3 m-1'>Harsh keshari </Text>
-                            <Text className='px-3 m-1'>harsh.2125csai1066@gmail.com</Text>
+                            <Text className='px-3 m-1'>{userName}</Text>
+                            <Text className='px-3 m-1'>{email}</Text>
                             <Text className='px-3 m-1'>
                                 bio of the user bio of the user bio of the user bio of the user. bio of the user bio of the user bio of the user bio of the user. lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum
                             </Text>

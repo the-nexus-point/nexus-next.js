@@ -11,7 +11,6 @@ import {
 const LeftSidebar = () => {
 
     const navLinks = [
-        { href: '/feed', name: 'Feed', icon: <AiFillHome className="w-5 h-5 mx-2" /> },
         { href: '/challenges', name: 'Challenges', icon: <AiFillFlag className="w-5 h-5 mx-2" /> },
     ];
 
@@ -35,12 +34,6 @@ const LeftSidebar = () => {
                         </Link>
                     )
                 })}
-                <Link
-                    href="/create-post"
-                    className="rounded-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 mx-5 focus:outline-none focus:shadow-outline flex items-center justify-center space-x-2">
-                    <AiOutlinePlus className="text-xl" />
-                    <span className="sm:max-lg:hidden">Create Post</span>
-                </Link>
             </div>
             <div className="flex flex-col justify-between mt-auto mx-5 mb-3 space-y-5">
             </div>

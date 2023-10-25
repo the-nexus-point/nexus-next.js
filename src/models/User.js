@@ -1,23 +1,53 @@
 import mongoose from "mongoose";
 
 const userSchema = new mongoose.Schema({
-  email: String,
-  username: String,
-  name: String,
+  email: {
+    type: String,
+    required: true,
+    unique: true,
+  },
+  username: {
+    type: String,
+    // required: true,
+    unique: true,
+  },
+  name: {
+    type: String,
+    required: true,
+  },
   profile: {
-    avatarUrl: String,
-    bio: String,
-    website: String,
-    techStack: [String],
+    avatarUrl: {
+      type: String,
+      // required: true,
+    },
+    bio: {
+      type: String,
+    },
+    website: {
+      type: String,
+    },
+    techStack: {
+      type: [String],
+    },
   },
   media: {
-    upvotes: Number,
-    downvotes: Number,
-    posts: Number,
+    upvotes: {
+      type: Number,
+    },
+    downvotes: {
+      type: Number,
+    },
+    posts: {
+      type: Number,
+    },
   },
-  challenges: {
-    codechef: { type: mongoose.Schema.Types.ObjectId, ref: "Challenge" }, // Reference to the Challenge model
-  },
+  // challenges: {
+  //   codechef: {
+  //     type: mongoose.Schema.Types.ObjectId,
+  //     ref: "Challenge",
+  //     required: true,
+  //   },
+  // },
 });
 
 const User = mongoose.models.User || mongoose.model("User", userSchema);

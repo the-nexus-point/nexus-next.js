@@ -3,7 +3,7 @@ import { FcGoogle } from "react-icons/fc";
 
 const Login = () => {
   return (
-    <div className="flex justify-center items-center h-screen">
+    <div className="flex justify-center items-center h-screen bg-zinc-900">
       <form className="bg-black drop-shadow-2xl rounded px-8 pt-10 pb-10 mb-4">
         <h3 className="text-center mb-5">Log In with College Id</h3>
         <div className="mb-5">

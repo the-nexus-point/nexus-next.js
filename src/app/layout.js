@@ -5,16 +5,13 @@ import { ChakraProviders } from "../services/Chakraproviders";
 import { NextAuthProvider } from "@/services/NextauthProvider";
 import { usePathname } from "next/navigation";
 
-// export const metadata = {
-//   title: "Nexus",
-// }; 
-
 
 export default function RootLayout({ children }) {
   const pathname = usePathname();
-  const isSignInPage = pathname.startsWith("/auth/signin");
+  const isSignInPage = pathname.startsWith("/signup");
+  const isLogInPage = pathname.startsWith("/login");
 
-  if (isSignInPage) {
+  if (isSignInPage || isLogInPage) {
     return (
       <html lang="en">
         <body className={`text-white`}>

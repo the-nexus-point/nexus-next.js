@@ -3,9 +3,7 @@ import Link from "next/link";
 import { usePathname } from 'next/navigation'
 
 import {
-    AiFillHome,
     AiFillFlag,
-    AiOutlinePlus,
 } from "react-icons/ai";
 
 const LeftSidebar = () => {

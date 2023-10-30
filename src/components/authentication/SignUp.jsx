@@ -4,16 +4,35 @@ import React, { useState } from "react";
 const SignUp = () => {
   const [formData, setFormData] = useState({
     username: "",
-    libraryId: "",
+    libId: "",
     email: "",
     password: "",
     branch: "",
   });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
+    try {
+      const response = await fetch("http://localhost:5001/api/users/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+      const data = await response.json();
+      console.log(data);
+
+      if (response.status === 200) {
+        console.log('Registration successful');
+        e.target.reset();
+      }
+      else {
+        console.error('Registration failed');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
     console.log(formData);
-    e.target.reset();
   };
 
   const handleInputChange = (e) => {
@@ -29,6 +48,7 @@ const SignUp = () => {
       <form
         onSubmit={handleSubmit}
         className="bg-black drop-shadow-2xl rounded px-8 pt-10 pb-10 mb-4 w-1/4"
+        method="POST"
       >
         <h3 className="text-center mb-5">Sign Up with College Id</h3>
         <div className="mb-5">
@@ -44,7 +64,7 @@ const SignUp = () => {
           <div className="mb-4">
             <input
               className="shadow appearance-none border border-gray-700 hover:border-gray-400 rounded w-full py-2 px-3 text-white leading-tight bg-neutral-900 focus:outline-none focus:shadow-outline"
-              name="libraryId"
+              name="libId"
               type="text"
               placeholder="Library ID"
               onChange={handleInputChange}
@@ -75,6 +95,9 @@ const SignUp = () => {
               placeholder="branch"
               onChange={handleInputChange}
             >
+              <option value="" disabled selected>
+                Select Branch
+              </option>
               <option value="CSE(AI)">CSE(AI)</option>
               <option value="CSE(AIML)">CSE(AIML)</option>
             </select>

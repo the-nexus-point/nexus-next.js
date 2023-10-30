@@ -1,6 +1,7 @@
 "use client"
 import React, { useState } from "react";
 
+
 const SignUp = () => {
   const [formData, setFormData] = useState({
     username: "",
@@ -10,11 +11,14 @@ const SignUp = () => {
     branch: "",
   });
 
+  const backendUrl = "http://localhost:5001";
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log("backendUrl" + backendUrl);
 
     try {
-      const response = await fetch("http://localhost:5001/api/users/register", {
+      const response = await fetch(`${backendUrl}/api/users/register`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),

@@ -15,6 +15,7 @@ import { BsFillPersonFill } from 'react-icons/bs';
 import Link from "next/link";
 
 const Profile = () => {
+    const userName = 'User Name';
     return (
         <div>
             <Menu className="">

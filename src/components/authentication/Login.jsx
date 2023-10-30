@@ -7,10 +7,30 @@ const Login = () => {
     password: "",
   });
 
-  const handleSubmit = (e) => {
+  const backendUrl = "http://localhost:5001";
+  const [token, setToken] = useState("");
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
-    e.target.reset();
+
+    try {
+      const response = await fetch(`${backendUrl}/api/users/login`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+      console.log(data);
+
+      if (data.accessToken) {
+        setToken(data.accessToken);
+        console.log("Login successful! Token: " + data.accessToken);
+        e.target.reset();
+      }
+    } catch (error) {
+      console.error("Login failed: " + error);
+    }
   };
 
   const handleInputChange = (e) => {

@@ -15,7 +15,6 @@ const SignUp = () => {
   
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("backendUrl" + backendUrl);
 
     try {
       const response = await fetch(`${backendUrl}/api/users/register`, {

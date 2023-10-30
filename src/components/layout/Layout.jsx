@@ -17,7 +17,6 @@ const Layout = ({ children, }) => {
       <div className="h-full w-full flex overflow-hidden">
         <LeftSidebar />
         <div className="w-full h-full p-2 flex flex-col overflow-y-auto scrollbar-none rounded-3xl space-y-10 bg-zinc-900 ">
-          {/* Your content */}
           {children}
         </div>
       </div>

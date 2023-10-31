@@ -51,7 +51,7 @@ const Login = () => {
         <div className="mb-5">
           <div className="mb-4">
             <input
-              className="shadow appearance-none border border-gray-700 hover:border-gray-400 bg-neutral-900 text-white rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="shadow appearance-none border border-gray-700 hover:border-gray-400 bg-neutral-900 text-white rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
               name="email"
               type="email"
               placeholder="Email"
@@ -60,7 +60,7 @@ const Login = () => {
           </div>
           <div className="mb-4">
             <input
-              className="shadow appearance-none border border-gray-700 hover:border-gray-400 bg-neutral-900 text-white rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="shadow appearance-none border border-gray-700 hover:border-gray-400 bg-neutral-900 text-white rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
               name="password"
               type="password"
               placeholder="Password"

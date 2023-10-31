@@ -23,13 +23,11 @@ const SignUp = () => {
         body: JSON.stringify(formData),
       });
       const data = await response.json();
-      console.log(data);
 
       if (response.status === 200) {
-        console.log('Registration successful');
-        // localStorage.setItem("token", data.accessToken);
-        res
+        localStorage.setItem("token", data.accessToken);
         e.target.reset();
+        window.location.href = "/";
       }
       else {
         console.error('Registration failed');

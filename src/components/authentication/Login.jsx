@@ -21,12 +21,12 @@ const Login = () => {
       });
 
       const data = await response.json();
-      console.log(data);
 
       if (data.accessToken) {
         setToken(data.accessToken);
-        console.log("Login successful! Token: " + data.accessToken);
+        localStorage.setItem("token", data.accessToken);
         e.target.reset();
+        window.location.href = "/";
       }
     } catch (error) {
       console.error("Login failed: " + error);

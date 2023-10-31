@@ -27,6 +27,8 @@ const SignUp = () => {
 
       if (response.status === 200) {
         console.log('Registration successful');
+        // localStorage.setItem("token", data.accessToken);
+        res
         e.target.reset();
       }
       else {

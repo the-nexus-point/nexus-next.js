@@ -67,12 +67,21 @@ const Login = () => {
               onChange={handleInputChange}
             />
           </div>
-          <div className="flex items-center justify-center">
+          <div className="flex items-center justify-center space-x-4">
             <button
-              className="bg-purple-500 hover-bg-purple-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+              className="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
               type="submit"
             >
-              Login
+              LogIn
+            </button>
+            <button
+              className="bg-white text-purple-500 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+              type="button"
+              onClick={() => {
+                window.location.href = "/signup";
+              }}
+            >
+              SignUp
             </button>
           </div>
         </div>

@@ -50,7 +50,7 @@ const SignUp = () => {
     <div className="flex justify-center items-center h-screen bg-zinc-900">
       <form
         onSubmit={handleSubmit}
-        className="bg-black drop-shadow-2xl rounded px-8 pt-10 pb-10 mb-4 w-1/4"
+        className="bg-black drop-shadow-2xl rounded px-8 pt-10 pb-10 mb-4"
         method="POST"
       >
         <h3 className="text-center mb-5">Sign Up with College Id</h3>
@@ -105,12 +105,21 @@ const SignUp = () => {
               <option value="CSE(AIML)">CSE(AIML)</option>
             </select>
           </div>
-          <div className="flex items-center justify-center">
+          <div className="flex items-center justify-center space-x-4">
             <button
               className="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
               type="submit"
             >
-              Sign Up
+              SignUp
+            </button>
+            <button
+              className="bg-white text-purple-500 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+              type="button"
+              onClick={() => {
+                window.location.href = "/login";
+              }}
+            >
+              LogIn
             </button>
           </div>
         </div>

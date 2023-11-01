@@ -1,31 +1,24 @@
 "use client";
-import { Box, Flex, Image, Tag } from '@chakra-ui/react';
+import { Badge, Box, Flex, Image, Tag, Text } from '@chakra-ui/react';
 import React from 'react';
 import { AiFillTrophy } from 'react-icons/ai';
 import { useState, useEffect } from 'react';
-import jwt from 'jsonwebtoken';
+import { jwtDecode } from "jwt-decode";
+import axios from 'axios';
+import { fetchUserData } from '../../services/userServices'
 
 function Profile() {
 
-    const [userData, setUserData] = useState(null);
+    const [userData, setUserData] = useState({});
+    const backendUrl = "http://localhost:5001";
 
     useEffect(() => {
-        const token = localStorage.getItem('token'); // Get the token from local storage
-        // console.log(token);
-        const secret = 'thisisasecret';
-        try {
-            const decodedToken = jwt.verify(token, 'thisisasecret');
-            if (!decodedToken || !decodedToken.userId) {
-                // Handle the case where the user's ID is not available in the token
-                return;
+        fetchUserData().then(data => {
+            if (data) {
+                setUserData(data);
             }
-            console.log(decodedToken);
-        } catch (error) {
-            console.error('Error decoding JWT:', error);
-        }
+        });
     }, []);
-
-
 
     return (
         <>
@@ -47,21 +40,48 @@ function Profile() {
                     <Box flex='2' className='flex space-y-3 flex-col justify-center items-start'>
                         <div className='flex justify-between px-3 py-4'>
                             <div className='flex flex-col justify-between space-y-3 mx-1'>
-                                <Tag> username </Tag>
-                                <Tag> email </Tag>
-                                <Tag> libId </Tag>
-                                <Tag> Branch </Tag>
+                                <Tag fontWeight='bold' colorScheme='gray'> {userData.username} </Tag>
+                                <Tag fontWeight='bold' colorScheme='gray'> {userData.email} </Tag>
+                                <Tag fontWeight='bold' colorScheme='gray'> {userData.libId} </Tag>
+                                <Tag fontWeight='bold' colorScheme='gray'> {userData.branch} </Tag>
                             </div>
                             <div className='w-full flex mx-1'>
-                                <Tag>bio of the user </Tag>
+                                <Tag fontWeight='bold' colorScheme=''>{userData.bio} </Tag>
                             </div>
                         </div>
                         <div className='w-full flex justify-between items-center px-3 py-4'>
-                            <Tag> hackerrankId </Tag>
-                            <Tag> codechefId </Tag>
-                            <Tag> codeforcesId </Tag>
-                            <Tag> leetcodeId </Tag>
-                            <Tag> githubId </Tag>
+                            <Text fontWeight='bold'>
+                                <Badge colorScheme='yellow'>
+                                    codechef
+                                </Badge>
+                                <p>
+                                    {userData.codechefId}
+                                </p>
+                            </Text>
+                            <Text fontWeight='bold'>
+                                <Badge colorScheme='yellow'>
+                                    codeforces
+                                </Badge>
+                                <p>
+                                    {userData.codeforcesId}
+                                </p>
+                            </Text>
+                            <Text fontWeight='bold'>
+                                <Badge colorScheme='yellow'>
+                                    leetcode
+                                </Badge>
+                                <p>
+                                    {userData.leetcodeId}
+                                </p>
+                            </Text>
+                            <Text fontWeight='bold'>
+                                <Badge colorScheme='yellow'>
+                                    github
+                                </Badge>
+                                <p>
+                                    {userData.githubId}
+                                </p>
+                            </Text>
                         </div>
                     </Box>
                 </Flex>

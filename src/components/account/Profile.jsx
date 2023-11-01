@@ -3,14 +3,11 @@ import { Badge, Box, Flex, Image, Tag, Text } from '@chakra-ui/react';
 import React from 'react';
 import { AiFillTrophy } from 'react-icons/ai';
 import { useState, useEffect } from 'react';
-import { jwtDecode } from "jwt-decode";
-import axios from 'axios';
-import { fetchUserData } from '../../services/userServices'
+import { fetchUserData } from '@/services/userServices'
 
 function Profile() {
 
     const [userData, setUserData] = useState({});
-    const backendUrl = "http://localhost:5001";
 
     useEffect(() => {
         fetchUserData().then(data => {

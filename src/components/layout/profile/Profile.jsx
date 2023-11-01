@@ -7,7 +7,6 @@ import {
     MenuGroup,
     MenuDivider,
     Avatar,
-    Button,
 } from '@chakra-ui/react';
 import { AiOutlineLogout } from 'react-icons/ai';
 import { MdOutlineSettings } from 'react-icons/md';
@@ -15,6 +14,10 @@ import { BsFillPersonFill } from 'react-icons/bs';
 import Link from "next/link";
 
 const Profile = () => {
+    const handleSignOut = () => {
+        localStorage.removeItem('token');
+        window.location.href = '/signup';
+    };
     const userName = 'User Name';
     return (
         <div>

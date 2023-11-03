@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
     Menu,
     MenuButton,
@@ -12,19 +12,31 @@ import { AiOutlineLogout } from 'react-icons/ai';
 import { MdOutlineSettings } from 'react-icons/md';
 import { BsFillPersonFill } from 'react-icons/bs';
 import Link from "next/link";
+import { fetchUserData } from '@/services/userServices';
 
 const Profile = () => {
     const handleSignOut = () => {
         localStorage.removeItem('token');
         window.location.href = '/signup';
     };
-    const userName = 'User Name';
+
+    const [userData, setUserData] = useState({});
+
+    useEffect(() => {
+        fetchUserData().then(data => {
+            if (data) {
+                setUserData(data);
+            }
+        });
+    }, []);
+
+
     return (
         <div>
-            <Menu className="">
+            <Menu className="bg-black">
                 <MenuButton as={Avatar} size="sm" cursor={'pointer'} />
                 <MenuList className="bg-black">
-                    <MenuGroup title={userName}>
+                    <MenuGroup title={userData.username} >
                         <Link href="/account"><MenuItem className='hover:bg-zinc-800' ><BsFillPersonFill className="text-xl mx-2" />Account</MenuItem></Link>
                     </MenuGroup>
                     <MenuDivider />

@@ -4,21 +4,20 @@
 
 ## Description
 
-This is a Next.js full-stack project that provides a platform where students can connect, share, collaborate, and engage with each other of their respective university.
+This is a front-end repository of the Nexus project that provides a platform where students can connect, share, collaborate, and engage with various coding contests.
 
 ## Features
 
-- Curriculum ranking: Allows users to rank curricular challenges.
-- Post/Feed management: Provides a platform for users to create, view, and interact with posts and feeds.
-- Resource sharing: Enables users to share and access notes and resources.
-- Authentication: Includes login and signup functionality for user authentication.
+- 
+- 
+- 
+- 
 
 ## Technologies Used
 
 - Next.js
-- Node.js
-- Express.js
-- MongoDB
+- Chakra UI
+- Tailwind CSS
 
 ## Getting Started
 

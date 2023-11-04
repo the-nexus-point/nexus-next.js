@@ -3,7 +3,7 @@ import Layout from "@/components/layout/Layout";
 import "./globals.css";
 import { ChakraProviders } from "../services/Chakraproviders";
 import { usePathname } from "next/navigation";
-
+import NextTopLoader from "nextjs-toploader";
 
 export default function RootLayout({ children }) {
   const pathname = usePathname();
@@ -14,7 +14,10 @@ export default function RootLayout({ children }) {
     return (
       <html lang="en">
         <body className={`text-white`}>
-            <ChakraProviders>{children}</ChakraProviders>
+          <ChakraProviders>
+            <NextTopLoader />
+            {children}
+          </ChakraProviders>
         </body>
       </html>
     );
@@ -23,9 +26,12 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`text-white`}>
-          <ChakraProviders>
-            <Layout>{children}</Layout>
-          </ChakraProviders>
+        <ChakraProviders>
+          <Layout>
+            <NextTopLoader />
+            {children}
+          </Layout>
+        </ChakraProviders>
       </body>
     </html>
   );

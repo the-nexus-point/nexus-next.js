@@ -51,11 +51,29 @@ function Profile() {
 
             if (response.status === 200) {
                 console.log('Codechef ID updated successfully');
+
             }
         } catch (error) {
             console.error('Error updating Codechef ID', error);
         }
+        updateCodechefProfile();
     }
+
+    const updateCodechefProfile = async () => {
+        try {
+            const response = await axios.put(`${backendUrl}/api/contests/codechef/${userData._id}`, {
+                codechefId: updatedCodechefId,
+            });
+
+            if (response.status === 200) {
+                console.log('Codechef Profile updated successfully');
+            }
+        } catch (error) {
+            console.error('Error updating Codechef Profile', error);
+        }
+    }
+
+
 
     const handleUpdateLeetcodeId = async () => {
         try {
@@ -189,7 +207,10 @@ function Profile() {
                                             <button
                                                 className="w-1/3 mt-1 py-1 bg-purple-500 hover:bg-purple-700 text-white text-xs font-bold rounded focus:outline-none focus:shadow-outline"
                                                 type="submit"
-                                                onClick={handleUpdateCodechefId}
+                                                onClick={() => {
+                                                    handleUpdateCodechefId();
+                                                    updateCodechefProfile();
+                                                }}
                                             >
                                                 Update
                                             </button>
@@ -287,6 +308,13 @@ function Profile() {
                         </div>
                     </Box>
                 </Flex>
+                {/* <button
+                    type='button'
+                    onClick={updateCodechefProfile}
+                >
+                dabao na
+
+                </button> */}
             </div>
         </>
     )

@@ -1,3 +1,4 @@
+"use client"
 import React from 'react'
 import Announcement from '@/components/announcement/Announcement'
 import { isUserAuthenticated } from '@/services/auth'

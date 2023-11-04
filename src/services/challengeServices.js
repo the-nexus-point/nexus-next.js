@@ -1,7 +1,7 @@
 import axios from "axios";
 import { jwtDecode } from "jwt-decode";
 
-const backendUrl = "http://localhost:5001";
+const backendUrl = process.env.BACKEND_URL;
 
 export async function fetchChallengesData() {
   try {

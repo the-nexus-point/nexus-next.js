@@ -10,7 +10,7 @@ import axios from 'axios';
 
 function Profile() {
 
-    const backendUrl = 'http://localhost:5001';
+    const backendUrl = process.env.BACKEND_URI || "http://localhost:5001";
 
     const [userData, setUserData] = useState({});
     const [updatedCodeforcesId, setUpdatedCodeforcesId] = useState('');

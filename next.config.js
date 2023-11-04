@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   env: {
-    BACKEND_URL: "http://localhost:5001",
+    BACKEND_URI: process.env.BACKEND_URI,
   },
 };
 

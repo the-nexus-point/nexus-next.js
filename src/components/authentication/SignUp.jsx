@@ -35,7 +35,6 @@ const SignUp = () => {
     } catch (error) {
       console.error('Error:', error);
     }
-    console.log(formData);
   };
 
   const handleInputChange = (e) => {

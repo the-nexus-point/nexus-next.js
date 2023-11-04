@@ -1,7 +1,7 @@
 import axios from "axios";
 import { jwtDecode } from "jwt-decode";
 
-const backendUrl = process.env.BACKEND_URL;
+const backendUrl = process.env.BACKEND_URI;
 
 export async function fetchChallengesData() {
   try {

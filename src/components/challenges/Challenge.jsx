@@ -6,7 +6,6 @@ const Challenge = ({ challenge }) => {
 
   const updatedAt = new Date(challenge.updatedAt);
   const formattedDate = `${updatedAt.toLocaleDateString()} ${updatedAt.toLocaleTimeString()}`;
-  console.log(formattedDate);
 
   return (
     <div className="border border-zinc-700 rounded-xl p-5 bg-zinc-900/10 hover:bg-zinc-800/20 hover:cursor-pointer flex justify-between items-center space-x-5">

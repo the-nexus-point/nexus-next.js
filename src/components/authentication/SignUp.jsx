@@ -11,7 +11,7 @@ const SignUp = () => {
     branch: "",
   });
 
-  const backendUrl = "https://nexus-backend-bmfi.onrender.com";
+  const backendUrl = process.env.BACKEND_URI || "http://localhost:5001";
   
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -35,7 +35,6 @@ const SignUp = () => {
     } catch (error) {
       console.error('Error:', error);
     }
-    console.log(formData);
   };
 
   const handleInputChange = (e) => {

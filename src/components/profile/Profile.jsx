@@ -10,7 +10,7 @@ import axios from 'axios';
 
 function Profile() {
 
-    const backendUrl = 'http://localhost:5001';
+    const backendUrl = process.env.BACKEND_URI || "http://localhost:5001";
 
     const [userData, setUserData] = useState({});
     const [updatedCodeforcesId, setUpdatedCodeforcesId] = useState('');
@@ -193,9 +193,9 @@ function Profile() {
                                     codechef
                                 </Badge>
                                 {userData.codechefId ? (
-                                    <p>
+                                    <div>
                                         {userData.codechefId}
-                                    </p>
+                                    </div>
                                 ) : (
                                     <form>
                                         <div className='flex flex-col justify-center items-center'>
@@ -225,9 +225,9 @@ function Profile() {
                                     codeforces
                                 </Badge>
                                 {userData.codeforcesId ? (
-                                    <p>
+                                    <div>
                                         {userData.codeforcesId}
-                                    </p>
+                                    </div>
                                 ) : (
                                     <form>
                                         <div className='flex flex-col justify-center items-center'>
@@ -254,9 +254,9 @@ function Profile() {
                                     Leetcode
                                 </Badge>
                                 {userData.leetcodeId ? (
-                                    <p>
+                                    <div>
                                         {userData.leetcodeId}
-                                    </p>
+                                    </div>
                                 ) : (
                                     <form>
                                         <div className='flex flex-col justify-center items-center'>
@@ -283,9 +283,9 @@ function Profile() {
                                     Github
                                 </Badge>
                                 {userData.githubId ? (
-                                    <p>
+                                    <div>
                                         {userData.githubId}
-                                    </p>
+                                    </div>
                                 ) : (
                                     <form>
                                         <div className='flex flex-col justify-center items-center'>

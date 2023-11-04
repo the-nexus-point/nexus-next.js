@@ -14,10 +14,8 @@ export default function RootLayout({ children }) {
     return (
       <html lang="en">
         <body className={`text-white`}>
-          <ChakraProviders>
-            <NextTopLoader />
-            {children}
-          </ChakraProviders>
+          <NextTopLoader color="#7E22CD" />
+          <ChakraProviders>{children}</ChakraProviders>
         </body>
       </html>
     );
@@ -26,11 +24,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`text-white`}>
+        <NextTopLoader color="#7E22CD" />
         <ChakraProviders>
-          <Layout>
-            <NextTopLoader />
-            {children}
-          </Layout>
+          <Layout>{children}</Layout>
         </ChakraProviders>
       </body>
     </html>

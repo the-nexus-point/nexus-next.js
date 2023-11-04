@@ -15,12 +15,12 @@ import Link from "next/link";
 import { fetchUserData } from '@/services/userServices';
 
 const Profile = () => {
+    const [userData, setUserData] = useState({});
+
     const handleSignOut = () => {
         localStorage.removeItem('token');
         window.location.href = '/signup';
     };
-
-    const [userData, setUserData] = useState({});
 
     useEffect(() => {
         fetchUserData().then(data => {
@@ -30,18 +30,17 @@ const Profile = () => {
         });
     }, []);
 
-
     return (
         <div>
             <Menu className="bg-black">
-                <MenuButton as={Avatar} size="sm" cursor={'pointer'} />
+                <MenuButton src={userData.userImg} as={Avatar} size="sm" cursor={'pointer'} />
                 <MenuList className="bg-black">
                     <MenuGroup title={userData.username} >
-                        <Link href="/account"><MenuItem className='hover:bg-zinc-800' ><BsFillPersonFill className="text-xl mx-2" />Account</MenuItem></Link>
+                        <Link href={`/${userData.libId}`}><MenuItem className='hover:bg-zinc-800' ><BsFillPersonFill className="text-xl mx-2" /> Profile</MenuItem></Link>
                     </MenuGroup>
                     <MenuDivider />
                     <MenuGroup title='Help'>
-                        <MenuItem className='hover:bg-zinc-800'><MdOutlineSettings className="text-xl mx-2" /> Settings</MenuItem>
+                        <Link href="/settings"><MenuItem className='hover:bg-zinc-800'><MdOutlineSettings className="text-xl mx-2" /> Settings</MenuItem></Link>
                         <MenuItem className='hover:bg-zinc-800' onClick={handleSignOut}><AiOutlineLogout className="text-xl mx-2 text-red-500" />Sign Out</MenuItem>
                     </MenuGroup>
                 </MenuList>

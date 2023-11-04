@@ -1,7 +1,8 @@
 "use client";
 import { Badge, Box, Flex, Image, Tag, Text } from '@chakra-ui/react';
 import React from 'react';
-import { AiFillTrophy, AiFillEdit } from 'react-icons/ai';
+import { AiFillEdit } from 'react-icons/ai';
+import { GiPodiumSecond, GiPodiumWinner, GiPodiumThird } from 'react-icons/gi';
 import { useState, useEffect } from 'react';
 import { fetchUserData } from '@/services/userServices'
 import axios from 'axios';
@@ -73,8 +74,6 @@ function Profile() {
         }
     }
 
-
-
     const handleUpdateLeetcodeId = async () => {
         try {
             const response = await axios.put(`${backendUrl}/api/users/${userData._id}`, {
@@ -132,8 +131,10 @@ function Profile() {
                             />
                         </div>
                         <div className='flex flex-col justify-center items-center'>
-                            <div className='mx-3 justify-center items-center flex flex-col space-y-3'>
-                                <Tag> <AiFillTrophy className="w-4 h-4" /> 4 </Tag>
+                            <div className='mx-3 justify-center items-center flex space-x-4'>
+                                <Tag> <GiPodiumSecond className="w-5 h-5" /> 4 </Tag>
+                                <Tag> <GiPodiumWinner className="w-8 h-8" /> 4 </Tag>
+                                <Tag> <GiPodiumThird className="w-5 h-5" /> 4 </Tag>
                             </div>
                         </div>
                     </Box>
@@ -175,10 +176,11 @@ function Profile() {
                                     </div>
                                 ) : (
                                     <div>
+                                        <Tag fontWeight='bold' colorScheme='gray' className='mx-2 my-2'> Bio </Tag>
                                         <Tag fontWeight='bold' colorScheme=''>
                                             {userData.bio}
                                         </Tag>
-                                        <Tag fontWeight='bold' colorScheme='gray' className='cursor-pointer' onClick={() => setIsEditingBio(true)}>
+                                        <Tag fontWeight='bold' colorScheme='gray' className='cursor-pointer mx-2 my-2' onClick={() => setIsEditingBio(true)}>
                                             <AiFillEdit className="w-4 h-4" />
                                         </Tag>
                                     </div>
@@ -288,7 +290,7 @@ function Profile() {
                                     <form>
                                         <div className='flex flex-col justify-center items-center'>
                                             <input
-                                                className="w-1/2 mt-1 py-1 shadow appearance-none border border-gray-700 hover:border-gray-400 bg-neutral-900 text-white rounded leading-tight focus:outline-none focus:shadow-outline"
+                                                className="w-1/2 mt-1 shadow appearance-none border border-gray-700 hover:border-gray-400 bg-neutral-900 text-white rounded leading-tight focus:outline-none focus:shadow-outline"
                                                 name="text"
                                                 type="text"
                                                 value={updatedGithubId}
@@ -308,13 +310,6 @@ function Profile() {
                         </div>
                     </Box>
                 </Flex>
-                {/* <button
-                    type='button'
-                    onClick={updateCodechefProfile}
-                >
-                dabao na
-
-                </button> */}
             </div>
         </>
     )

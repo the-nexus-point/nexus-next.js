@@ -1,3 +1,4 @@
+"use client"
 import SignUp from "@/components/authentication/SignUp";
 import React from 'react'
 import { isUserAuthenticated } from '@/services/auth'

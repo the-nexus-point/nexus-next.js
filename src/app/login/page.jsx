@@ -6,9 +6,9 @@ import { redirect } from 'next/navigation';
 
 const LoginPage = () => {
 
-    if (isUserAuthenticated()) {
-        redirect('/challenges');
-    }
+    // if (isUserAuthenticated()) {
+    //     redirect('/challenges');
+    // }
 
     return (
         <div>

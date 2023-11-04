@@ -11,7 +11,7 @@ import axios from 'axios';
 function Profile() {
 
     const backendUrl = process.env.BACKEND_URI || "http://localhost:5001";
-
+    const apiKey = process.env.API_KEY;
     const [userData, setUserData] = useState({});
     const [updatedCodeforcesId, setUpdatedCodeforcesId] = useState('');
     const [updatedCodechefId, setUpdatedCodechefId] = useState('');
@@ -34,6 +34,10 @@ function Profile() {
         try {
             const response = await axios.put(`${backendUrl}/api/users/${userData._id}`, {
                 codeforcesId: updatedCodeforcesId,
+            }, {
+                headers: {
+                    "Authorization": `Bearer ${apiKey}`
+                }
             });
 
             if (response.status === 200) {
@@ -48,6 +52,10 @@ function Profile() {
         try {
             const response = await axios.put(`${backendUrl}/api/users/${userData._id}`, {
                 codechefId: updatedCodechefId,
+            }, {
+                headers: {
+                    "Authorization": `Bearer ${apiKey}`
+                }
             });
 
             if (response.status === 200) {
@@ -64,6 +72,10 @@ function Profile() {
         try {
             const response = await axios.put(`${backendUrl}/api/contests/codechef/${userData._id}`, {
                 codechefId: updatedCodechefId,
+            }, {
+                headers: {
+                    "Authorization": `Bearer ${apiKey}`
+                }
             });
 
             if (response.status === 200) {
@@ -78,6 +90,10 @@ function Profile() {
         try {
             const response = await axios.put(`${backendUrl}/api/users/${userData._id}`, {
                 leetcodeId: updatedLeetcodeId,
+            }, {
+                headers: {
+                    "Authorization": `Bearer ${apiKey}`
+                }
             });
 
             if (response.status === 200) {
@@ -92,6 +108,10 @@ function Profile() {
         try {
             const response = await axios.put(`${backendUrl}/api/users/${userData._id}`, {
                 githubId: updatedGithubId,
+            }, {
+                headers: {
+                    "Authorization": `Bearer ${apiKey}`
+                }
             });
 
             if (response.status === 200) {
@@ -106,6 +126,10 @@ function Profile() {
         try {
             const response = await axios.put(`${backendUrl}/api/users/${userData._id}`, {
                 bio: updatedBio,
+            }, {
+                headers: {
+                    "Authorization": `Bearer ${apiKey}`
+                }
             });
 
             if (response.status === 200) {
@@ -188,7 +212,7 @@ function Profile() {
                             </div>
                         </div>
                         <div className='w-full flex justify-between items-center px-3 py-4'>
-                            <Text fontWeight='bold' className='flex flex-col justify-center items-center'>
+                            <div className='font-bold flex flex-col justify-center items-center'>
                                 <Badge colorScheme='yellow' className='w-fit'>
                                     codechef
                                 </Badge>
@@ -219,8 +243,8 @@ function Profile() {
                                         </div>
                                     </form>
                                 )}
-                            </Text>
-                            <Text fontWeight='bold' className='flex flex-col justify-center items-center'>
+                            </div>
+                            <div className='font-bold flex flex-col justify-center items-center'>
                                 <Badge colorScheme='yellow' className='w-fit'>
                                     codeforces
                                 </Badge>
@@ -248,8 +272,8 @@ function Profile() {
                                         </div>
                                     </form>
                                 )}
-                            </Text>
-                            <Text fontWeight='bold' className='flex flex-col justify-center items-center'>
+                            </div>
+                            <div className='font-bold flex flex-col justify-center items-center'>
                                 <Badge colorScheme='yellow' className='w-fit'>
                                     Leetcode
                                 </Badge>
@@ -277,8 +301,8 @@ function Profile() {
                                         </div>
                                     </form>
                                 )}
-                            </Text>
-                            <Text fontWeight='bold' className='flex flex-col justify-center items-center'>
+                            </div>
+                            <div className='font-bold flex flex-col justify-center items-center'>
                                 <Badge colorScheme='yellow' className='w-fit'>
                                     Github
                                 </Badge>
@@ -306,7 +330,7 @@ function Profile() {
                                         </div>
                                     </form>
                                 )}
-                            </Text>
+                            </div>
                         </div>
                     </Box>
                 </Flex>

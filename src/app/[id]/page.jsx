@@ -1,5 +1,5 @@
 "use client"
-import Profile from "@/components/account/Profile";
+import Profile from "@/components/profile/Profile";
 import { isUserAuthenticated } from "@/services/auth";
 
 

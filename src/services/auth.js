@@ -1,6 +1,7 @@
-
 export function isUserAuthenticated() {
+  // if (typeof window !== "undefined") {
     const token = localStorage.getItem("token");
-    return !!token; // Return true if the token exists, false if it doesn't
-  }
-  
+    return !!token;
+  // }
+  // return true; // Fallback if running in a non-browser environment
+}

@@ -5,11 +5,15 @@ import { usePathname } from 'next/navigation'
 import {
     AiFillFlag,
 } from "react-icons/ai";
+import { MdLeaderboard } from 'react-icons/md';
+import { HiSpeakerphone } from 'react-icons/hi';
 
 const LeftSidebar = () => {
 
     const navLinks = [
         { href: '/challenges', name: 'Challenges', icon: <AiFillFlag className="w-5 h-5 mx-2" /> },
+        { href: '/leaderboard', name: 'Leaderboard', icon: <MdLeaderboard className="w-5 h-5 mx-2" /> },
+        { href: '/announcement', name: 'Annoucement', icon: <HiSpeakerphone className="w-5 h-5 mx-2" /> },
     ];
 
     const pathname = usePathname()

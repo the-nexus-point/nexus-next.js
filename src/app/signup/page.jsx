@@ -6,9 +6,9 @@ import { redirect } from 'next/navigation';
 
 const SignUpPage = () => {
 
-    if (isUserAuthenticated()) {
-        redirect('/challenges');
-    }
+    // if (isUserAuthenticated()) {
+    //     redirect('/challenges');
+    // }
 
     return (
         <div>

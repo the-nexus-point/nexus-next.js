@@ -7,7 +7,7 @@ const Login = () => {
     password: "",
   });
 
-  const backendUrl = "http://localhost:5001";
+  const backendUrl = "https://nexus-backend-bmfi.onrender.com";
   const [token, setToken] = useState("");
 
   const handleSubmit = async (e) => {

@@ -7,6 +7,7 @@ const Login = () => {
     password: "",
   });
 
+  const apiKey = process.env.API_KEY;
   const backendUrl = process.env.BACKEND_URI || "http://localhost:5001";
   const [token, setToken] = useState("");
 
@@ -16,7 +17,10 @@ const Login = () => {
     try {
       const response = await fetch(`${backendUrl}/api/users/login`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${apiKey}`
+        },
         body: JSON.stringify(formData),
       });
 

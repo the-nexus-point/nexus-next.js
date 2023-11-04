@@ -12,14 +12,18 @@ const SignUp = () => {
   });
 
   const backendUrl = process.env.BACKEND_URI || "http://localhost:5001";
-  
+  const apiKey = process.env.API_KEY;
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
       const response = await fetch(`${backendUrl}/api/users/register`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${apiKey}`
+        },
         body: JSON.stringify(formData),
       });
       const data = await response.json();

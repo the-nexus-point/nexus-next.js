@@ -1,8 +1,8 @@
 "use client"
 import React from 'react'
-import Announcement from '@/components/announcement/Announcement'
 import { isUserAuthenticated } from '@/services/auth'
 import { redirect } from 'next/navigation';
+import Announcements from '@/components/announcement/Annuncements';
 
 
 
@@ -14,7 +14,7 @@ const AnnouncementPage = () => {
 
     return (
         <div>
-            <Announcement />
+            <Announcements />
         </div>
     );
 };

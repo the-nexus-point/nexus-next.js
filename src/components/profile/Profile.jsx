@@ -1,15 +1,14 @@
 "use client";
-import { Badge, Box, Flex, Image, Tag, Text } from '@chakra-ui/react';
-import React from 'react';
+import { Avatar, Badge, Box, Flex, Image, Tag, Text } from '@chakra-ui/react';
+import React, { useState, useEffect } from 'react';
 import { AiFillEdit } from 'react-icons/ai';
 import { GiPodiumSecond, GiPodiumWinner, GiPodiumThird } from 'react-icons/gi';
-import { useState, useEffect } from 'react';
-import { fetchUserData } from '@/services/userServices'
 import axios from 'axios';
-
+import { useToast } from '@chakra-ui/react';
+import { fetchUserData } from '@/services/userServices';
 
 function Profile() {
-
+    const toast = useToast();
     const backendUrl = process.env.BACKEND_URI || "http://localhost:5001";
     const apiKey = process.env.API_KEY;
     const [userData, setUserData] = useState({});
@@ -20,8 +19,6 @@ function Profile() {
     const [updatedBio, setUpdatedBio] = useState('');
     const [isEditingBio, setIsEditingBio] = useState(false);
 
-
-
     useEffect(() => {
         fetchUserData().then(data => {
             if (data) {
@@ -30,22 +27,14 @@ function Profile() {
         });
     }, []);
 
-    const handleUpdateCodeforcesId = async () => {
-        try {
-            const response = await axios.put(`${backendUrl}/api/users/${userData._id}`, {
-                codeforcesId: updatedCodeforcesId,
-            }, {
-                headers: {
-                    "Authorization": `Bearer ${apiKey}`
-                }
-            });
-
-            if (response.status === 200) {
-                console.log('Codeforces ID updated successfully');
-            }
-        } catch (error) {
-            console.error('Error updating Codeforces ID', error);
-        }
+    const showToast = (status, description) => {
+        toast({
+            title: status,
+            description: description,
+            status,
+            duration: 3000,
+            isClosable: true,
+        });
     };
 
     const handleUpdateCodechefId = async () => {
@@ -59,11 +48,11 @@ function Profile() {
             });
 
             if (response.status === 200) {
-                console.log('Codechef ID updated successfully');
-
+                showToast('success', 'Codechef ID updated successfully');
             }
         } catch (error) {
             console.error('Error updating Codechef ID', error);
+            showToast('error', 'Error updating Codechef ID');
         }
         updateCodechefProfile();
     }
@@ -79,12 +68,35 @@ function Profile() {
             });
 
             if (response.status === 200) {
-                console.log('Codechef Profile updated successfully');
+                showToast('success', 'Codechef Profile updated successfully');
             }
         } catch (error) {
             console.error('Error updating Codechef Profile', error);
+            showToast('error', 'Error updating Codechef Profile');
         }
     }
+
+    const handleUpdateCodeforcesId = async () => {
+        try {
+            const response = await axios.put(`${backendUrl}/api/users/${userData._id}`, {
+                codeforcesId: updatedCodeforcesId,
+            }, {
+                headers: {
+                    "Authorization": `Bearer ${apiKey}`
+                }
+            });
+
+            if (response.status === 200) {
+                showToast('success', 'Codeforces ID updated successfully');
+            } else {
+                console.error('Codeforces ID update failed with status:', response.status);
+                showToast('error', 'Codeforces ID update failed');
+            }
+        } catch (error) {
+            console.error('Error updating Codeforces ID:', error);
+            showToast('error', 'Error updating Codeforces ID');
+        }
+    };
 
     const handleUpdateLeetcodeId = async () => {
         try {
@@ -97,10 +109,11 @@ function Profile() {
             });
 
             if (response.status === 200) {
-                console.log('Leetcode ID updated successfully');
+                showToast('success', 'Leetcode ID updated successfully');
             }
         } catch (error) {
             console.error('Error updating Leetcode ID', error);
+            showToast('error', 'Error updating Leetcode ID');
         }
     }
 
@@ -115,12 +128,15 @@ function Profile() {
             });
 
             if (response.status === 200) {
-                console.log('Github ID updated successfully');
+                showToast('success', 'Github ID updated successfully');
             }
-        } catch (error) {
+        }
+        catch (error) {
             console.error('Error updating Github ID', error);
+            showToast('error', 'Error updating Github ID');
         }
     }
+
 
     const handleUpdateBio = async () => {
         try {
@@ -133,12 +149,14 @@ function Profile() {
             });
 
             if (response.status === 200) {
-                console.log('Bio updated successfully');
+                showToast('success', 'Bio updated successfully');
                 setIsEditingBio(false);
                 setUserData({ ...userData, bio: updatedBio });
             }
-        } catch (error) {
+        }
+        catch (error) {
             console.error('Error updating Bio', error);
+            showToast('error', 'Error updating Bio');
         }
     }
 
@@ -151,6 +169,7 @@ function Profile() {
                             <Image
                                 borderRadius='full'
                                 boxSize='150px'
+                                as={Avatar}
                                 src={userData.userImg}
                             />
                         </div>
@@ -199,12 +218,12 @@ function Profile() {
                                         </button>
                                     </div>
                                 ) : (
-                                    <div>
-                                        <Tag fontWeight='bold' colorScheme='gray' className='mx-2 my-2'> Bio </Tag>
+                                    <div className='flex flex-col'>
+                                        <Tag fontWeight='bold' colorScheme='gray' className='w-fit mx-2 my-2'> Bio </Tag>
                                         <Tag fontWeight='bold' colorScheme=''>
                                             {userData.bio}
                                         </Tag>
-                                        <Tag fontWeight='bold' colorScheme='gray' className='cursor-pointer mx-2 my-2' onClick={() => setIsEditingBio(true)}>
+                                        <Tag fontWeight='bold' colorScheme='gray' className='w-fit cursor-pointer mx-2 my-2' onClick={() => setIsEditingBio(true)}>
                                             <AiFillEdit className="w-4 h-4" />
                                         </Tag>
                                     </div>
@@ -221,27 +240,25 @@ function Profile() {
                                         {userData.codechefId}
                                     </div>
                                 ) : (
-                                    <form>
-                                        <div className='flex flex-col justify-center items-center'>
-                                            <input
-                                                className="w-1/2 mt-1 shadow appearance-none border border-gray-700 hover:border-gray-400 bg-neutral-900 text-white rounded leading-tight focus:outline-none focus:shadow-outline"
-                                                name="text"
-                                                type="text"
-                                                value={updatedCodechefId}
-                                                onChange={(e) => setUpdatedCodechefId(e.target.value)}
-                                            />
-                                            <button
-                                                className="w-1/3 mt-1 py-1 bg-purple-500 hover:bg-purple-700 text-white text-xs font-bold rounded focus:outline-none focus:shadow-outline"
-                                                type="submit"
-                                                onClick={() => {
-                                                    handleUpdateCodechefId();
-                                                    updateCodechefProfile();
-                                                }}
-                                            >
-                                                Update
-                                            </button>
-                                        </div>
-                                    </form>
+                                    <div className='flex flex-col justify-center items-center'>
+                                        <input
+                                            className="w-1/2 mt-1 shadow appearance-none border border-gray-700 hover:border-gray-400 bg-neutral-900 text-white rounded leading-tight focus:outline-none focus:shadow-outline"
+                                            name="text"
+                                            type="text"
+                                            value={updatedCodechefId}
+                                            onChange={(e) => setUpdatedCodechefId(e.target.value)}
+                                        />
+                                        <button
+                                            className="w-1/3 mt-1 py-1 bg-purple-500 hover:bg-purple-700 text-white text-xs font-bold rounded focus:outline-none focus:shadow-outline"
+                                            type="button"
+                                            onClick={() => {
+                                                handleUpdateCodechefId();
+                                                updateCodechefProfile();
+                                            }}
+                                        >
+                                            Update
+                                        </button>
+                                    </div>
                                 )}
                             </div>
                             <div className='font-bold flex flex-col justify-center items-center'>
@@ -253,24 +270,22 @@ function Profile() {
                                         {userData.codeforcesId}
                                     </div>
                                 ) : (
-                                    <form>
-                                        <div className='flex flex-col justify-center items-center'>
-                                            <input
-                                                className="w-1/2 mt-1 shadow appearance-none border border-gray-700 hover:border-gray-400 bg-neutral-900 text-white rounded leading-tight focus:outline-none focus:shadow-outline"
-                                                name="text"
-                                                type="text"
-                                                value={updatedCodeforcesId}
-                                                onChange={(e) => setUpdatedCodeforcesId(e.target.value)}
-                                            />
-                                            <button
-                                                className="w-1/3 mt-1 py-1 bg-purple-500 hover:bg-purple-700 text-white text-xs font-bold rounded focus:outline-none focus:shadow-outline"
-                                                type="submit"
-                                                onClick={handleUpdateCodeforcesId}
-                                            >
-                                                Update
-                                            </button>
-                                        </div>
-                                    </form>
+                                    <div className='flex flex-col justify-center items-center'>
+                                        <input
+                                            className="w-1/2 mt-1 shadow appearance-none border border-gray-700 hover:border-gray-400 bg-neutral-900 text-white rounded leading-tight focus:outline-none focus:shadow-outline"
+                                            name="text"
+                                            type="text"
+                                            value={updatedCodeforcesId}
+                                            onChange={(e) => setUpdatedCodeforcesId(e.target.value)}
+                                        />
+                                        <button
+                                            className="w-1/3 mt-1 py-1 bg-purple-500 hover:bg-purple-700 text-white text-xs font-bold rounded focus:outline-none focus:shadow-outline"
+                                            type="button"
+                                            onClick={handleUpdateCodeforcesId}
+                                        >
+                                            Update
+                                        </button>
+                                    </div>
                                 )}
                             </div>
                             <div className='font-bold flex flex-col justify-center items-center'>
@@ -282,24 +297,22 @@ function Profile() {
                                         {userData.leetcodeId}
                                     </div>
                                 ) : (
-                                    <form>
-                                        <div className='flex flex-col justify-center items-center'>
-                                            <input
-                                                className="w-1/2 mt-1 shadow appearance-none border border-gray-700 hover:border-gray-400 bg-neutral-900 text-white rounded leading-tight focus:outline-none focus:shadow-outline"
-                                                name="text"
-                                                type="text"
-                                                value={updatedLeetcodeId}
-                                                onChange={(e) => setUpdatedLeetcodeId(e.target.value)}
-                                            />
-                                            <button
-                                                className="w-1/3 mt-1 py-1 bg-purple-500 hover:bg-purple-700 text-white text-xs font-bold rounded focus:outline-none focus:shadow-outline"
-                                                type="submit"
-                                                onClick={handleUpdateLeetcodeId}
-                                            >
-                                                Update
-                                            </button>
-                                        </div>
-                                    </form>
+                                    <div className='flex flex-col justify-center items-center'>
+                                        <input
+                                            className="w-1/2 mt-1 shadow appearance-none border border-gray-700 hover:border-gray-400 bg-neutral-900 text-white rounded leading-tight focus:outline-none focus:shadow-outline"
+                                            name="text"
+                                            type="text"
+                                            value={updatedLeetcodeId}
+                                            onChange={(e) => setUpdatedLeetcodeId(e.target.value)}
+                                        />
+                                        <button
+                                            className="w-1/3 mt-1 py-1 bg-purple-500 hover:bg-purple-700 text-white text-xs font-bold rounded focus:outline-none focus:shadow-outline"
+                                            type="button"
+                                            onClick={handleUpdateLeetcodeId}
+                                        >
+                                            Update
+                                        </button>
+                                    </div>
                                 )}
                             </div>
                             <div className='font-bold flex flex-col justify-center items-center'>
@@ -311,24 +324,22 @@ function Profile() {
                                         {userData.githubId}
                                     </div>
                                 ) : (
-                                    <form>
-                                        <div className='flex flex-col justify-center items-center'>
-                                            <input
-                                                className="w-1/2 mt-1 shadow appearance-none border border-gray-700 hover:border-gray-400 bg-neutral-900 text-white rounded leading-tight focus:outline-none focus:shadow-outline"
-                                                name="text"
-                                                type="text"
-                                                value={updatedGithubId}
-                                                onChange={(e) => setUpdatedGithubId(e.target.value)}
-                                            />
-                                            <button
-                                                className="w-1/3 mt-1 py-1 bg-purple-500 hover:bg-purple-700 text-white text-xs font-bold rounded focus:outline-none focus:shadow-outline"
-                                                type="submit"
-                                                onClick={handleUpdateGithubId}
-                                            >
-                                                Update
-                                            </button>
-                                        </div>
-                                    </form>
+                                    <div className='flex flex-col justify-center items-center'>
+                                        <input
+                                            className="w-1/2 mt-1 shadow appearance-none border border-gray-700 hover:border-gray-400 bg-neutral-900 text-white rounded leading-tight focus:outline-none focus:shadow-outline"
+                                            name="text"
+                                            type="text"
+                                            value={updatedGithubId}
+                                            onChange={(e) => setUpdatedGithubId(e.target.value)}
+                                        />
+                                        <button
+                                            className="w-1/3 mt-1 py-1 bg-purple-500 hover:bg-purple-700 text-white text-xs font-bold rounded focus:outline-none focus:shadow-outline"
+                                            type="button"
+                                            onClick={handleUpdateGithubId}
+                                        >
+                                            Update
+                                        </button>
+                                    </div>
                                 )}
                             </div>
                         </div>

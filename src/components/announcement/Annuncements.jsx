@@ -2,13 +2,17 @@
 import React, { useEffect, useState } from "react";
 import Announcement from "./Announcement";
 import { fetchAnnouncementsData } from "@/services/announcementServices";
+import axios from "axios";
 
 const Announcements = () => {
   const [announcements, setAnnouncements] = useState([]);
 
   useEffect(() => {
-    const data = fetchAnnouncementsData();
-    setAnnouncements(data);
+    fetchAnnouncementsData().then((data) => {
+      if (data) {
+        setAnnouncements(data);
+      }
+    });
   }, []);
 
   return (

@@ -1,6 +1,6 @@
 "use client"
 import React, { useState } from "react";
-
+import { Button, useToast } from "@chakra-ui/react";
 
 const SignUp = () => {
   const [formData, setFormData] = useState({
@@ -14,6 +14,8 @@ const SignUp = () => {
   const backendUrl = process.env.BACKEND_URI || "http://localhost:5001";
   const apiKey = process.env.API_KEY;
 
+  const toast = useToast();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -22,7 +24,7 @@ const SignUp = () => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "Authorization": `Bearer ${apiKey}`
+          "Authorization": `Bearer ${apiKey}`,
         },
         body: JSON.stringify(formData),
       });
@@ -31,13 +33,33 @@ const SignUp = () => {
       if (response.status === 200) {
         localStorage.setItem("token", data.accessToken);
         e.target.reset();
+        toast({
+          title: "Registration successful.",
+          description: "Your account has been created.",
+          status: "success",
+          duration: 3000,
+          isClosable: true,
+        });
         window.location.href = "/";
-      }
-      else {
-        console.error('Registration failed');
+      } else {
+        console.error("Registration failed");
+        toast({
+          title: "Registration failed.",
+          description: "Please check your inputs.",
+          status: "error",
+          duration: 3000,
+          isClosable: true,
+        });
       }
     } catch (error) {
-      console.error('Error:', error);
+      console.error("Error:", error);
+      toast({
+        title: "An error occurred.",
+        description: "Please try again later.",
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+      });
     }
   };
 
@@ -56,7 +78,7 @@ const SignUp = () => {
         className="bg-black drop-shadow-2xl rounded px-8 pt-10 pb-10 mb-4"
         method="POST"
       >
-        <h3 className="text-center mb-5">Sign Up with College Id</h3>
+        <h3 className="text-center mb-5">Sign Up with College ID</h3>
         <div className="mb-5">
           <div className="mb-4">
             <input
@@ -98,7 +120,7 @@ const SignUp = () => {
             <select
               className="shadow appearance-none border border-gray-700 hover:border-gray-400 rounded w-full py-2 px-3 text-white leading-tight bg-neutral-900 focus:outline-none focus:shadow-outline"
               name="branch"
-              placeholder="branch"
+              placeholder="Branch"
               onChange={handleInputChange}
             >
               <option value="" disabled selected>
@@ -109,21 +131,33 @@ const SignUp = () => {
             </select>
           </div>
           <div className="flex items-center justify-center space-x-4">
-            <button
-              className="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            <Button
               type="submit"
+              bg="purple.500"
+              _hover={{ bg: "purple.700" }}
+              color="white"
+              fontWeight="bold"
+              py={2}
+              px={4}
+              rounded="md"
+              _focus={{ outline: "none", shadow: "outline" }}
             >
-              SignUp
-            </button>
-            <button
-              className="bg-white text-purple-500 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-              type="button"
+              Sign Up
+            </Button>
+            <Button
+              bg="white"
+              color="purple.500"
+              fontWeight="bold"
+              py={2}
+              px={4}
+              rounded="md"
+              _focus={{ outline: "none", shadow: "outline" }}
               onClick={() => {
                 window.location.href = "/login";
               }}
             >
-              LogIn
-            </button>
+              Log In
+            </Button>
           </div>
         </div>
       </form>

@@ -1,5 +1,6 @@
 "use client"
 import React, { useState } from "react";
+import { Button, useToast } from "@chakra-ui/react";
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -10,6 +11,7 @@ const Login = () => {
   const apiKey = process.env.API_KEY;
   const backendUrl = process.env.BACKEND_URI || "http://localhost:5001";
   const [token, setToken] = useState("");
+  const toast = useToast();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -30,10 +32,32 @@ const Login = () => {
         setToken(data.accessToken);
         localStorage.setItem("token", data.accessToken);
         e.target.reset();
+        toast({
+          title: "Login successful.",
+          description: "You have successfully logged in.",
+          status: "success",
+          duration: 3000,
+          isClosable: true,
+        });
         window.location.href = "/";
+      } else {
+        toast({
+          title: "Login failed.",
+          description: "Please check your credentials.",
+          status: "error",
+          duration: 3000,
+          isClosable: true,
+        });
       }
     } catch (error) {
       console.error("Login failed: " + error);
+      toast({
+        title: "An error occurred.",
+        description: "Please try again later.",
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+      });
     }
   };
 
@@ -51,7 +75,7 @@ const Login = () => {
         onSubmit={handleSubmit}
         className="bg-black drop-shadow-2xl rounded px-8 pt-10 pb-10 mb-4"
       >
-        <h3 className="text-center mb-5">Log In with College Id</h3>
+        <h3 className="text-center mb-5">Log In with College ID</h3>
         <div className="mb-5">
           <div className="mb-4">
             <input
@@ -72,21 +96,33 @@ const Login = () => {
             />
           </div>
           <div className="flex items-center justify-center space-x-4">
-            <button
-              className="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            <Button
               type="submit"
+              bg="purple.500"
+              _hover={{ bg: "purple.700" }}
+              color="white"
+              fontWeight="bold"
+              py={2}
+              px={4}
+              rounded="md"
+              _focus={{ outline: "none", shadow: "outline" }}
             >
-              LogIn
-            </button>
-            <button
-              className="bg-white text-purple-500 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-              type="button"
+              Log In
+            </Button>
+            <Button
+              bg="white"
+              color="purple.500"
+              fontWeight="bold"
+              py={2}
+              px={4}
+              rounded="md"
+              _focus={{ outline: "none", shadow: "outline" }}
               onClick={() => {
                 window.location.href = "/signup";
               }}
             >
-              SignUp
-            </button>
+              Sign Up
+            </Button>
           </div>
         </div>
       </form>

@@ -1,5 +1,7 @@
 # Nexus
 
+## This repo is deprecated
+
 ##### Connect, Compete, and Thrive Together.
 
 ## Description
